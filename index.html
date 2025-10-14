@@ -3,6 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Theme Color for Mobile Browsers -->
+    <meta name="theme-color" content="#0e1f42">
+
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="DomiHive">
+
+    <!-- Icons for iOS -->
+    <link rel="apple-touch-icon" href="ASSECT/icon-192.png">
+
+    <!-- Windows -->
+    <meta name="msapplication-TileColor" content="#0e1f42">
     <title>DomiHive - Professional Property Management</title>
     <link rel="stylesheet" href="/CSS/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -1036,5 +1052,19 @@
     </div>
     </footer>
     <script src="JAVASCRIPT/home.js"></script>
+    <!-- Register Service Worker -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/sw.js')
+        .then(function(registration) {
+          console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch(function(error) {
+          console.log('Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>
 </body>
 </html>
