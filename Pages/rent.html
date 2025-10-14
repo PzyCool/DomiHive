@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Properties - DomiHive</title>
+    <link rel="stylesheet" href="/CSS/style.css">
+    <link rel="stylesheet" href="/CSS/rent.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <!-- Logo Section -->
+            <div class="logo-hierarchy">
+                <div class="main-product">
+                    <img src="/ASSECT/Logo Design_ DomiHive saas 2.png" alt="DomiHive" class="hierarchy-logo domihive-logo">
+                    <span class="company-tooltip">DomiHive - Browse Properties</span>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="nav-links">
+                <a href="/index.html" class="nav-link">Home</a>
+                
+                <!-- Rent Dropdown - ACTIVE STATE -->
+                <div class="nav-dropdown">
+                    <a href="/Pages/rent.html" class="nav-link active">Rent <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="/Pages/for-tenant.html" class="dropdown-item" id="tenant-option">
+                            <i class="fas fa-home"></i>
+                            For Tenants
+                        </a>
+                        <a href="/Pages/for-student.html" class="dropdown-item" id="student-option">
+                            <i class="fas fa-graduation-cap"></i>
+                            For Students
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Vertical Separator -->
+                <div class="nav-separator"></div>
+
+                <!-- User Actions -->
+                <div class="nav-actions">
+                    <!-- Favorites Counter -->
+                    <button class="nav-icon favorite-counter" title="Saved Properties" id="favorites-btn">
+                        <i class="fas fa-heart"></i>
+                        <span class="favorite-badge">0</span>
+                    </button>
+                    
+                    <!-- Search Toggle -->
+                </div>
+
+                <!-- Login Dropdown -->
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link">Login <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            Student Login
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-home"></i>
+                            Tenant Login
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Navigation Icons -->
+                <div class="nav-icons">
+                    <!-- Theme Toggle -->
+                    <button class="nav-icon theme-toggle" title="Toggle Theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    
+                    <!-- Notifications -->
+                    <button class="nav-icon" title="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                </div>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Rent Hero Section -->
+    <section class="rent-hero" aria-label="Find your rental home">
+    <div class="hero-background">
+        <div class="hero-overlay"></div>
+    </div>
+    
+    <div class="hero-inner">
+        <h1 class="hero-title">Find Your Perfect Rental Home</h1>
+        <p class="hero-subtitle">Discover verified properties with professional management across Lagos</p>
+    </div>
+
+    <!-- Search wrapper: floating on large screens, static on small screens -->
+    <div class="search-wrap" role="search" aria-label="Property search box">
+        <div class="search-box">
+
+            <!-- Tabs - DomiHive Categories -->
+            <div class="tabs" role="tablist" aria-label="Property type">
+                <button class="tab active" data-type="rent" role="tab" aria-selected="true">For Rent</button>
+                <button class="tab" data-type="shortlet" role="tab" aria-selected="false">Short Lets</button>
+                <button class="tab" data-type="commercial" role="tab" aria-selected="false">Commercial</button>
+            </div>
+
+            <!-- Filters grid -->
+            <div class="filters" id="filtersGrid">
+                <!-- Area Type (MUST BE CHOSEN FIRST) -->
+                <div class="filter-select-wrapper">
+                    <select id="areaTypeSelect" aria-label="Choose Mainland or Island">
+                        <option value="">Area Type</option>
+                        <option value="mainland">Lagos Mainland</option>
+                        <option value="island">Lagos Island</option>
+                    </select>
+                </div>
+
+                <!-- Location (populated based on Area Type) -->
+                <div class="filter-select-wrapper">
+                    <select id="locationSelect" aria-label="Choose location">
+                        <option value="">Location</option>
+                    </select>
+                </div>
+
+                <!-- Property Type (populated based on tab selection) -->
+                <div class="filter-select-wrapper">
+                    <select id="typeSelect" aria-label="Property type">
+                        <!-- populated by JS -->
+                    </select>
+                </div>
+
+                <!-- Bedrooms -->
+                <div class="filter-select-wrapper">
+                    <select id="bedroomsSelect" aria-label="Bedrooms">
+                        <option value="">Bedrooms</option>
+                        <option value="1">1 Bedroom</option>
+                        <option value="2">2 Bedrooms</option>
+                        <option value="3">3 Bedrooms</option>
+                        <option value="4">4+ Bedrooms</option>
+                    </select>
+                </div>
+
+                <!-- Min Price -->
+                <div class="filter-select-wrapper">
+                    <select id="minPriceSelect" aria-label="Minimum price">
+                        <option value="">Min. Price</option>
+                        <option value="50000">₦50,000/year</option>
+                        <option value="100000">₦100,000/year</option>
+                        <option value="300000">₦300,000/year</option>
+                        <option value="500000">₦500,000/year</option>
+                        <option value="1000000">₦1,000,000/year</option>
+                    </select>
+                </div>
+
+                <!-- Max Price -->
+                <div class="filter-select-wrapper">
+                    <select id="maxPriceSelect" aria-label="Maximum price">
+                        <option value="">Max. Price</option>
+                        <option value="200000">₦200,000/year</option>
+                        <option value="500000">₦500,000/year</option>
+                        <option value="1000000">₦1,000,000/year</option>
+                        <option value="2000000">₦2,000,000/year</option>
+                        <option value="5000000">₦5,000,000+</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Search input row -->
+            <div class="search-row">
+                <input id="searchInput" class="search-input" type="search" placeholder="Search by property name, estate, or features (e.g. 'Lekki 3 bedroom')" aria-label="Search input" />
+                <button class="search-btn" id="doSearch" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                    Search
+                </button>
+            </div>
+
+            <div class="helper">Choose <strong>Area Type</strong> first to see available locations. All properties are <strong>verified by DomiHive</strong></div>
+        </div>
+    </div>
+    </section>
+        <!--Main-->
+    <main>
+        <!-- Properties Grid Section -->
+    <section class="properties-section">
+    <div class="container">
+        <div class="properties-header">
+            <h2>Available Properties</h2>
+            <div class="results-info">
+                <span id="results-count">80+</span> properties found
+            </div>
+        </div>
+
+        <div class="properties-layout">
+            <!-- Advanced Filter Sidebar -->
+            <aside class="filter-sidebar">
+                <div class="filter-header">
+                    <h3>Advanced Filters</h3>
+                    <button class="clear-filters" id="clearFilters">Clear All</button>
+                </div>
+
+                <!-- Price Range -->
+                <div class="filter-group">
+                    <h4>Price Range (₦/year)</h4>
+                    <div class="price-inputs">
+                        <input type="number" id="minPrice" placeholder="Min" class="price-input">
+                        <span>-</span>
+                        <input type="number" id="maxPrice" placeholder="Max" class="price-input">
+                    </div>
+                    <div class="price-slider">
+                        <input type="range" id="priceRange" min="0" max="10000000" step="100000" class="range-slider">
+                    </div>
+                </div>
+
+                <!-- Bedrooms & Bathrooms -->
+                <div class="filter-group">
+                    <h4>Bedrooms</h4>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="checkbox" name="bedrooms" value="1">
+                            <span>1 Bedroom</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="bedrooms" value="2">
+                            <span>2 Bedrooms</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="bedrooms" value="3">
+                            <span>3 Bedrooms</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="bedrooms" value="4">
+                            <span>4+ Bedrooms</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h4>Bathrooms</h4>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="checkbox" name="bathrooms" value="1">
+                            <span>1 Bathroom</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="bathrooms" value="2">
+                            <span>2 Bathrooms</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="bathrooms" value="3">
+                            <span>3+ Bathrooms</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Property Type -->
+                <div class="filter-group">
+                    <h4>Property Type</h4>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="checkbox" name="propertyType" value="apartment">
+                            <span>Apartment</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="propertyType" value="house">
+                            <span>House</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="propertyType" value="duplex">
+                            <span>Duplex</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="propertyType" value="studio">
+                            <span>Studio</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="propertyType" value="shared">
+                            <span>Shared</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Furnishing -->
+                <div class="filter-group">
+                    <h4>Furnishing</h4>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="checkbox" name="furnishing" value="furnished">
+                            <span>Furnished</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="furnishing" value="semi-furnished">
+                            <span>Semi-Furnished</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="furnishing" value="unfurnished">
+                            <span>Unfurnished</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Amenities -->
+                <div class="filter-group">
+                    <h4>Amenities</h4>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="checkbox" name="amenities" value="wifi">
+                            <span>WiFi</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="amenities" value="parking">
+                            <span>Parking</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="amenities" value="security">
+                            <span>24/7 Security</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="amenities" value="pool">
+                            <span>Swimming Pool</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="amenities" value="gym">
+                            <span>Gym</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="amenities" value="ac">
+                            <span>Air Conditioning</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="amenities" value="generator">
+                            <span>Generator</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="amenities" value="water">
+                            <span>Constant Water</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Location Areas -->
+                <div class="filter-group">
+                    <h4>Location Areas</h4>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="checkbox" name="area" value="mainland">
+                            <span>Mainland Areas</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="area" value="island">
+                            <span>Island Areas</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Pet Policy -->
+                <div class="filter-group">
+                    <h4>Pet Policy</h4>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="checkbox" name="pets" value="allowed">
+                            <span>Pets Allowed</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="pets" value="not-allowed">
+                            <span>No Pets</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Property Age -->
+                <div class="filter-group">
+                    <h4>Property Age</h4>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="checkbox" name="age" value="new">
+                            <span>New (0-2 years)</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="age" value="modern">
+                            <span>Modern (3-10 years)</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="age" value="established">
+                            <span>Established (10+ years)</span>
+                        </label>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Properties Grid -->
+            <div class="properties-grid-container">
+                <!-- Sort Options -->
+                <div class="sort-options">
+                    <span>Sort by:</span>
+                    <select id="sortSelect" class="sort-select">
+                        <option value="newest">Newest First</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="popular">Most Popular</option>
+                        <option value="verified">Verified First</option>
+                    </select>
+                    <div class="view-options">
+                        <button class="view-btn active" data-view="grid">
+                            <i class="fas fa-th"></i>
+                        </button>
+                        <button class="view-btn" data-view="list">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Properties Grid -->
+                <div class="properties-grid" id="propertiesGrid">
+                    <!-- Property cards will be dynamically loaded here -->
+                    <!-- We'll start with 80+ property cards -->
+                </div>
+
+                <!-- Loading More -->
+                <div class="load-more-container">
+                    <button class="load-more-btn" id="loadMore">
+                        <i class="fas fa-spinner"></i>
+                        Load More Properties
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+    </main>
+
+    <script src="/JAVASCRIPT/rent.js"></script>
+</body>
+</html>

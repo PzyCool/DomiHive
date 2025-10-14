@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Application - DomiHive</title>
+    <link rel="stylesheet" href="/CSS/application.css">
+    <link rel="stylesheet" href="/CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo-hierarchy">
+                <div class="main-product">
+                    <img src="/ASSECT/Logo Design_ DomiHive saas 2.png" alt="DomiHive" class="hierarchy-logo domihive-logo">
+                    <span class="company-tooltip">DomiHive - Complete Application</span>
+                </div>
+            </div>
+
+            <nav class="nav-links">
+                <a href="/index.html" class="nav-link">Home</a>
+                
+                <div class="nav-dropdown">
+                    <a href="/Pages/rent.html" class="nav-link">Rent <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="/Pages/for-tenant.html" class="dropdown-item">
+                            <i class="fas fa-home"></i>
+                            For Tenants
+                        </a>
+                        <a href="/Pages/for-student.html" class="dropdown-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            For Students
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-separator"></div>
+
+                <div class="nav-actions">
+                    <button class="nav-icon favorite-counter" title="Saved Properties" id="favorites-btn">
+                        <i class="fas fa-heart"></i>
+                        <span class="favorite-badge">0</span>
+                    </button>
+                </div>
+
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link">Login <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            Student Login
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-home"></i>
+                            Tenant Login
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-icons">
+                    <button class="nav-icon theme-toggle" title="Toggle Theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    
+                    <button class="nav-icon" title="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                </div>
+            </nav>
+
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Application Main Content -->
+    <main class="application-page">
+        <div class="container">
+            <!-- Progress Steps -->
+            <div class="progress-steps">
+                <div class="step completed">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Property Details</div>
+                </div>
+                <div class="step completed">
+                    <div class="step-number">2</div>
+                    <div class="step-label" id="step2Label">Book Inspection</div>
+                </div>
+                <div class="step active">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Complete Application</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-label">Screening</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-label">Payment</div>
+                </div>
+            </div>
+
+            <!-- Application Flow Options -->
+            <section class="flow-options-section" id="flowOptions" style="display: none;">
+                <div class="flow-header">
+                    <h1>Choose Your Application Path</h1>
+                    <p>Select how you'd like to proceed with your rental application</p>
+                </div>
+
+                <div class="flow-cards">
+                    <div class="flow-card" onclick="selectFlow('direct')">
+                        <div class="flow-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Direct Application</h3>
+                        <p>Skip inspection and proceed directly to complete your rental application</p>
+                        <div class="flow-benefits">
+                            <span class="benefit-tag">Fast Track</span>
+                            <span class="benefit-tag">Immediate</span>
+                        </div>
+                        <button class="flow-select-btn">Select This Option</button>
+                    </div>
+
+                    <div class="flow-card" onclick="selectFlow('inspection')">
+                        <div class="flow-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>Book Inspection First</h3>
+                        <p>Schedule a physical viewing of the property before completing your application</p>
+                        <div class="flow-benefits">
+                            <span class="benefit-tag">See Property</span>
+                            <span class="benefit-tag">Informed Decision</span>
+                        </div>
+                        <button class="flow-select-btn">Select This Option</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Property Summary -->
+            <section class="property-summary">
+                <div class="summary-header">
+                    <h1>Complete Your Rental Application</h1>
+                    <p id="applicationSubtitle">Please fill in your details to apply for this property</p>
+                </div>
+
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="/ASSECT/3d-rendering-modern-dining-room-living-room-with-luxury-decor (1).jpg" alt="Property Image" id="applicationPropertyImage">
+                    </div>
+                    <div class="property-info">
+                        <h3 id="applicationPropertyTitle">Property Title</h3>
+                        <div class="property-price" id="applicationPropertyPrice">₦0/year</div>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span id="applicationPropertyLocation">Location</span>
+                        </div>
+                        <div class="property-features">
+                            <span class="feature">
+                                <i class="fas fa-bed"></i>
+                                <span id="applicationBedrooms">0</span> bed
+                            </span>
+                            <span class="feature">
+                                <i class="fas fa-bath"></i>
+                                <span id="applicationBathrooms">0</span> bath
+                            </span>
+                            <span class="feature">
+                                <i class="fas fa-ruler-combined"></i>
+                                <span id="applicationSize">0 sqm</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Application Form -->
+            <section class="application-form-section">
+                <div class="form-container">
+                    <h2>Create Your Account & Apply</h2>
+                    <p>Fill in your personal details to create an account and submit your application</p>
+
+                    <form id="applicationForm" class="application-form">
+                        <!-- User Type Tracking (Hidden) -->
+                        <input type="hidden" id="trackedUserType" name="trackedUserType">
+                        <input type="hidden" id="applicationFlow" name="applicationFlow">
+                        <input type="hidden" id="propertyId" name="propertyId">
+
+                        <!-- Personal Information -->
+                        <div class="form-section">
+                            <h3>Personal Information</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="firstName">First Name *</label>
+                                    <input type="text" id="firstName" name="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name *</label>
+                                    <input type="text" id="lastName" name="lastName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email Address *</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number *</label>
+                                    <input type="tel" id="phone" name="phone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="dateOfBirth">Date of Birth *</label>
+                                    <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="gender">Gender *</label>
+                                    <select id="gender" name="gender" required>
+                                        <option value="">Select gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                        <option value="prefer-not-to-say">Prefer not to say</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Account Security -->
+                        <div class="form-section">
+                            <h3>Account Security</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="password">Password *</label>
+                                    <input type="password" id="password" name="password" required>
+                                    <div class="password-strength" id="passwordStrength"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirmPassword">Confirm Password *</label>
+                                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- User Type Specific Sections -->
+                        
+                        <!-- Student Specific Fields -->
+                        <div class="form-section student-specific" id="studentSection" style="display: none;">
+                            <h3>Student Information</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="institution">Educational Institution *</label>
+                                    <input type="text" id="institution" name="institution">
+                                </div>
+                                <div class="form-group">
+                                    <label for="studentId">Student ID Number</label>
+                                    <input type="text" id="studentId" name="studentId">
+                                </div>
+                                <div class="form-group">
+                                    <label for="courseOfStudy">Course of Study *</label>
+                                    <input type="text" id="courseOfStudy" name="courseOfStudy">
+                                </div>
+                                <div class="form-group">
+                                    <label for="yearOfStudy">Year of Study *</label>
+                                    <select id="yearOfStudy" name="yearOfStudy">
+                                        <option value="">Select year</option>
+                                        <option value="1">Year 1</option>
+                                        <option value="2">Year 2</option>
+                                        <option value="3">Year 3</option>
+                                        <option value="4">Year 4</option>
+                                        <option value="5">Year 5</option>
+                                        <option value="postgraduate">Postgraduate</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="expectedGraduation">Expected Graduation Year *</label>
+                                    <input type="number" id="expectedGraduation" name="expectedGraduation" min="2024" max="2030">
+                                </div>
+                                <div class="form-group">
+                                    <label for="guardianName">Guardian/Parent Name</label>
+                                    <input type="text" id="guardianName" name="guardianName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="guardianPhone">Guardian/Parent Phone</label>
+                                    <input type="tel" id="guardianPhone" name="guardianPhone">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tenant Specific Fields -->
+                        <div class="form-section tenant-specific" id="tenantSection" style="display: none;">
+                            <h3>Employment & Income Information</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="occupation">Occupation *</label>
+                                    <input type="text" id="occupation" name="occupation">
+                                </div>
+                                <div class="form-group">
+                                    <label for="employer">Employer/Company *</label>
+                                    <input type="text" id="employer" name="employer">
+                                </div>
+                                <div class="form-group">
+                                    <label for="employmentType">Employment Type *</label>
+                                    <select id="employmentType" name="employmentType">
+                                        <option value="">Select type</option>
+                                        <option value="full-time">Full-time</option>
+                                        <option value="part-time">Part-time</option>
+                                        <option value="self-employed">Self-employed</option>
+                                        <option value="contract">Contract</option>
+                                        <option value="unemployed">Unemployed</option>
+                                        <option value="student">Student</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="monthlyIncome">Monthly Income (₦) *</label>
+                                    <input type="number" id="monthlyIncome" name="monthlyIncome" min="0">
+                                </div>
+                                <div class="form-group">
+                                    <label for="workDuration">Duration at Current Job (years) *</label>
+                                    <input type="number" id="workDuration" name="workDuration" min="0" max="50" step="0.5">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Emergency Contact -->
+                        <div class="form-section">
+                            <h3>Emergency Contact</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="emergencyName">Emergency Contact Name *</label>
+                                    <input type="text" id="emergencyName" name="emergencyName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="emergencyPhone">Emergency Contact Phone *</label>
+                                    <input type="tel" id="emergencyPhone" name="emergencyPhone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="emergencyRelationship">Relationship *</label>
+                                    <input type="text" id="emergencyRelationship" name="emergencyRelationship" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Terms and Agreements -->
+                        <div class="form-section">
+                            <div class="terms-agreement">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                                    <span class="checkmark"></span>
+                                    I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="terms-link">Privacy Policy</a>
+                                </label>
+                                
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="agreeScreening" name="agreeScreening" required>
+                                    <span class="checkmark"></span>
+                                    I consent to background screening and verification checks
+                                </label>
+                                
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="agreeCommunication" name="agreeCommunication">
+                                    <span class="checkmark"></span>
+                                    I agree to receive communication regarding my application and property updates
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Form Actions -->
+                        <div class="form-actions">
+                            <button type="button" class="btn-secondary" onclick="goBackToPrevious()">
+                                <i class="fas fa-arrow-left"></i>
+                                Back
+                            </button>
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-user-plus"></i>
+                                Create Account & Continue
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div class="success-modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>Application Submitted Successfully!</h2>
+                <button class="close-modal" onclick="closeSuccessModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="success-details">
+                    <p>Your account has been created and your application is being processed.</p>
+                    <div class="application-summary">
+                        <h4>Application Details:</h4>
+                        <div class="detail-item">
+                            <strong>Application ID:</strong>
+                            <span id="summaryApplicationId">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Property:</strong>
+                            <span id="summaryPropertyTitle">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Applicant:</strong>
+                            <span id="summaryApplicantName">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Next Step:</strong>
+                            <span id="summaryNextStep">-</span>
+                        </div>
+                    </div>
+                    <p class="confirmation-note">Please check your email for verification and next steps.</p>
+                </div>
+                
+                <div class="modal-actions">
+                    <button class="btn-secondary" onclick="closeSuccessModal()">
+                        View Dashboard
+                    </button>
+                    <button class="btn-primary" onclick="proceedToScreening()">
+                        Proceed to Screening
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="/JAVASCRIPT/application.js"></script>
+</body>
+</html>

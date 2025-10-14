@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Accommodation - DomiHive</title>
+    <link rel="stylesheet" href="/CSS/for-student.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <!-- Logo Section -->
+            <div class="logo-hierarchy">
+                <div class="main-product">
+                    <img src="/ASSECT/Logo Design_ DomiHive saas 2.png" alt="DomiHive" class="hierarchy-logo domihive-logo">
+                    <span class="company-tooltip">DomiHive - Student Accommodation</span>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="nav-links">
+                <a href="/index.html" class="nav-link">Home</a>
+                
+                <!-- Rent Dropdown - STUDENT ACTIVE STATE -->
+                <div class="nav-dropdown">
+                    <a href="/Pages/rent.html" class="nav-link">Rent <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="/Pages/for-tenant.html" class="dropdown-item" id="tenant-option">
+                            <i class="fas fa-home"></i>
+                            For Tenants
+                        </a>
+                        <a href="/Pages/for-student.html" class="dropdown-item active" id="student-option">
+                            <i class="fas fa-graduation-cap"></i>
+                            For Students
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Vertical Separator -->
+                <div class="nav-separator"></div>
+
+                <!-- User Actions -->
+                <div class="nav-actions">
+                    <!-- Favorites Counter -->
+                    <button class="nav-icon favorite-counter" title="Saved Properties" id="favorites-btn">
+                        <i class="fas fa-heart"></i>
+                        <span class="favorite-badge">0</span>
+                    </button>
+                </div>
+
+                <!-- Login Dropdown -->
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link">Login <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            Student Login
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-home"></i>
+                            Tenant Login
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Navigation Icons -->
+                <div class="nav-icons">
+                    <!-- Theme Toggle -->
+                    <button class="nav-icon theme-toggle" title="Toggle Theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    
+                    <!-- Notifications -->
+                    <button class="nav-icon" title="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                </div>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Student Hero Section -->
+    <section class="rent-hero student-hero" aria-label="Find student accommodation">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+        </div>
+        
+        <div class="hero-inner">
+            <h1 class="hero-title">Find Perfect Student Accommodation</h1>
+            <p class="hero-subtitle">Discover affordable, secure, and convenient student housing near campuses across Lagos</p>
+        </div>
+
+        <!-- Search wrapper -->
+        <div class="search-wrap" role="search" aria-label="Student accommodation search">
+            <div class="search-box">
+
+                <!-- Tabs - Student Focused -->
+                <div class="tabs" role="tablist" aria-label="Accommodation type for students">
+                    <button class="tab active" data-type="rent" role="tab" aria-selected="true">Student Housing</button>
+                    <button class="tab" data-type="shortlet" role="tab" aria-selected="false">Short Stays</button>
+                    <button class="tab" data-type="shared" role="tab" aria-selected="false">Shared Apartments</button>
+                </div>
+
+                <!-- Filters grid -->
+                <div class="filters" id="filtersGrid">
+                    <!-- Area Type -->
+                    <div class="filter-select-wrapper">
+                        <select id="areaTypeSelect" aria-label="Choose Mainland or Island">
+                            <option value="">Area Type</option>
+                            <option value="mainland">Lagos Mainland</option>
+                            <option value="island">Lagos Island</option>
+                        </select>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="filter-select-wrapper">
+                        <select id="locationSelect" aria-label="Choose location">
+                            <option value="">Location</option>
+                        </select>
+                    </div>
+
+                    <!-- Property Type -->
+                    <div class="filter-select-wrapper">
+                        <select id="typeSelect" aria-label="Accommodation type">
+                            <option value="">Accommodation Type</option>
+                        </select>
+                    </div>
+
+                    <!-- Bedrooms -->
+                    <div class="filter-select-wrapper">
+                        <select id="bedroomsSelect" aria-label="Bedrooms">
+                            <option value="">Bedrooms</option>
+                            <option value="1">1 Bedroom</option>
+                            <option value="2">2 Bedrooms</option>
+                            <option value="shared">Shared Room</option>
+                            <option value="studio">Studio</option>
+                        </select>
+                    </div>
+
+                    <!-- Min Price -->
+                    <div class="filter-select-wrapper">
+                        <select id="minPriceSelect" aria-label="Minimum price">
+                            <option value="">Min. Price</option>
+                            <option value="20000">₦20,000/year</option>
+                            <option value="50000">₦50,000/year</option>
+                            <option value="100000">₦100,000/year</option>
+                            <option value="150000">₦150,000/year</option>
+                        </select>
+                    </div>
+
+                    <!-- Max Price -->
+                    <div class="filter-select-wrapper">
+                        <select id="maxPriceSelect" aria-label="Maximum price">
+                            <option value="">Max. Price</option>
+                            <option value="50000">₦50,000/year</option>
+                            <option value="100000">₦100,000/year</option>
+                            <option value="200000">₦200,000/year</option>
+                            <option value="300000">₦300,000/year</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Search input row -->
+                <div class="search-row">
+                    <input id="searchInput" class="search-input" type="search" placeholder="Search for student hostels, shared apartments, or studios (e.g. 'hostel near UNILAG')" aria-label="Search input for students" />
+                    <button class="search-btn" id="doSearch" aria-label="Search">
+                        <i class="fas fa-search"></i>
+                        Search
+                    </button>
+                </div>
+
+                <div class="helper">Choose <strong>Area Type</strong> first to see available locations. <strong>Student-verified accommodations only</strong></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Properties Grid Section -->
+        <section class="properties-section">
+            <div class="container">
+                <div class="properties-header">
+                    <h2>Student Accommodations & Hostels</h2>
+                    <div class="results-info">
+                        <span id="results-count">40+</span> student properties found
+                    </div>
+                </div>
+
+                <div class="properties-layout">
+                    <!-- Advanced Filter Sidebar -->
+                    <aside class="filter-sidebar">
+                        <div class="filter-header">
+                            <h3>Advanced Filters</h3>
+                            <button class="clear-filters" id="clearFilters">Clear All</button>
+                        </div>
+
+                        <!-- Price Range -->
+                        <div class="filter-group">
+                            <h4>Price Range (₦/year)</h4>
+                            <div class="price-inputs">
+                                <input type="number" id="minPrice" placeholder="Min" class="price-input">
+                                <span>-</span>
+                                <input type="number" id="maxPrice" placeholder="Max" class="price-input">
+                            </div>
+                            <div class="price-slider">
+                                <input type="range" id="priceRange" min="0" max="500000" step="10000" class="range-slider">
+                            </div>
+                        </div>
+
+                        <!-- Accommodation Type -->
+                        <div class="filter-group">
+                            <h4>Accommodation Type</h4>
+                            <div class="filter-options">
+                                <label class="filter-option">
+                                    <input type="checkbox" name="propertyType" value="hostel">
+                                    <span>Student Hostel</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" name="propertyType" value="shared">
+                                    <span>Shared Apartment</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" name="propertyType" value="studio">
+                                    <span>Studio</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" name="propertyType" value="apartment">
+                                    <span>Apartment</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" name="propertyType" value="self-contain">
+                                    <span>Self Contain</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Room Type -->
+                        <div class="filter-group">
+                            <h4>Room Type</h4>
+                            <div class="filter-options">
+                                <label class="filter-option">
+                                    <input type="checkbox" name="bedrooms" value="shared">
+                                    <span>Shared Room</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" name="bedrooms" value="1">
+                                    <span>Single Room</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" name="bedrooms" value="studio">
+                                    <span>Studio</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Bathrooms -->
+                        <div class="filter-group">
+                            <h4>Bathrooms</h4>
+                            <div class="filter-options">
+                                <label class="filter-option">
+                                    <input type="checkbox" name="bathrooms" value="shared">
+                                    <span>Shared Bathroom</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" name="bathrooms" value="1">
+                                    <span>Private Bathroom</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Student Amenities -->
+                        <div class="filter-group">
+                            <h4>Student Amenities</h4>
+                            <div class="filter-options">
+                                <label class="filter-option">
+                                    <input type="checkbox" name="amenities" value="wifi">
+                                    <span>High-Speed WiFi</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" name="amenities" value="study-room">
+                                    <span>Study Room</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" name="amenities" value="security">
+                                    <span>24/7 Security</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" name="amenities" value="laundry">
+                                    <span>Laundry Facility</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" name="amenities" value="generator">
+                                    <span>Generator</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" name="amenities" value="water">
+                                    <span>Constant Water</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" name="amenities" value="common-area">
+                                    <span>Common Area</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" name="amenities" value="kitchen">
+                                    <span>Shared Kitchen</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Location Areas -->
+                        <div class="filter-group">
+                            <h4>Location Areas</h4>
+                            <div class="filter-options">
+                                <label class="filter-option">
+                                    <input type="checkbox" name="area" value="mainland">
+                                    <span>Mainland Areas</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" name="area" value="island">
+                                    <span>Island Areas</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Near Universities -->
+                        <div class="filter-group">
+                            <h4>Near Universities</h4>
+                            <div class="filter-options">
+                                <label class="filter-option">
+                                    <input type="checkbox" name="campus" value="unilag">
+                                    <span>Near UNILAG</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" name="campus" value="uniben">
+                                    <span>Near UNIBEN</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" name="campus" value="lasu">
+                                    <span>Near LASU</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" name="campus" value="covenant">
+                                    <span>Near Covenant</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Furnishing -->
+                        <div class="filter-group">
+                            <h4>Furnishing</h4>
+                            <div class="filter-options">
+                                <label class="filter-option">
+                                    <input type="checkbox" name="furnishing" value="furnished">
+                                    <span>Furnished</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" name="furnishing" value="semi-furnished">
+                                    <span>Semi-Furnished</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" name="furnishing" value="unfurnished">
+                                    <span>Unfurnished</span>
+                                </label>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <!-- Properties Grid -->
+                    <div class="properties-grid-container">
+                        <!-- Sort Options -->
+                        <div class="sort-options">
+                            <span>Sort by:</span>
+                            <select id="sortSelect" class="sort-select">
+                                <option value="newest">Newest First</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="popular">Most Popular</option>
+                                <option value="verified">Verified First</option>
+                            </select>
+                            <div class="view-options">
+                                <button class="view-btn active" data-view="grid">
+                                    <i class="fas fa-th"></i>
+                                </button>
+                                <button class="view-btn" data-view="list">
+                                    <i class="fas fa-list"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Properties Grid -->
+                        <div class="properties-grid" id="propertiesGrid">
+                            <!-- Student accommodation cards will be dynamically loaded here -->
+                        </div>
+
+                        <!-- Loading More -->
+                        <div class="load-more-container">
+                            <button class="load-more-btn" id="loadMore">
+                                <i class="fas fa-spinner"></i>
+                                Load More Accommodations
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="/JAVASCRIPT/for-student.js"></script>
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Inspection - DomiHive</title>
+    <link rel="stylesheet" href="/CSS/book-inspection.css">
+    <link rel="stylesheet" href="/CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo-hierarchy">
+                <div class="main-product">
+                    <img src="/ASSECT/Logo Design_ DomiHive saas 2.png" alt="DomiHive" class="hierarchy-logo domihive-logo">
+                    <span class="company-tooltip">DomiHive - Book Inspection</span>
+                </div>
+            </div>
+
+            <nav class="nav-links">
+                <a href="/index.html" class="nav-link">Home</a>
+                
+                <div class="nav-dropdown">
+                    <a href="/Pages/rent.html" class="nav-link">Rent <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="/Pages/for-tenant.html" class="dropdown-item">
+                            <i class="fas fa-home"></i>
+                            For Tenants
+                        </a>
+                        <a href="/Pages/for-student.html" class="dropdown-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            For Students
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-separator"></div>
+
+                <div class="nav-actions">
+                    <button class="nav-icon favorite-counter" title="Saved Properties" id="favorites-btn">
+                        <i class="fas fa-heart"></i>
+                        <span class="favorite-badge">0</span>
+                    </button>
+                </div>
+
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link">Login <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            Student Login
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-home"></i>
+                            Tenant Login
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-icons">
+                    <button class="nav-icon theme-toggle" title="Toggle Theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    
+                    <button class="nav-icon" title="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                </div>
+            </nav>
+
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Book Inspection Main Content -->
+    <main class="book-inspection-page">
+        <div class="container">
+            <!-- Progress Steps -->
+            <div class="progress-steps">
+                <div class="step active">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Property Details</div>
+                </div>
+                <div class="step active">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Book Inspection</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Complete Application</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-label">Screening</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-label">Payment</div>
+                </div>
+            </div>
+
+            <!-- Property Summary -->
+            <section class="property-summary">
+                <div class="summary-header">
+                    <h1>Book Property Inspection</h1>
+                    <p>Schedule a physical viewing of the property before making your decision</p>
+                </div>
+
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="/ASSECT/3d-rendering-modern-dining-room-living-room-with-luxury-decor (1).jpg" alt="Property Image" id="inspectionPropertyImage">
+                    </div>
+                    <div class="property-info">
+                        <h3 id="inspectionPropertyTitle">Property Title</h3>
+                        <div class="property-price" id="inspectionPropertyPrice">₦0/year</div>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span id="inspectionPropertyLocation">Location</span>
+                        </div>
+                        <div class="property-features">
+                            <span class="feature">
+                                <i class="fas fa-bed"></i>
+                                <span id="inspectionBedrooms">0</span> bed
+                            </span>
+                            <span class="feature">
+                                <i class="fas fa-bath"></i>
+                                <span id="inspectionBathrooms">0</span> bath
+                            </span>
+                            <span class="feature">
+                                <i class="fas fa-ruler-combined"></i>
+                                <span id="inspectionSize">0 sqm</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Inspection Booking Form -->
+            <section class="inspection-form-section">
+                <div class="form-container">
+                    <h2>Schedule Your Inspection</h2>
+                    <p>Choose a convenient date and time for your property viewing</p>
+
+                    <form id="inspectionBookingForm" class="inspection-form">
+                        <!-- Contact Information -->
+                        <div class="form-section">
+                            <h3>Your Contact Information</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="fullName">Full Name *</label>
+                                    <input type="text" id="fullName" name="fullName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email Address *</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number *</label>
+                                    <input type="tel" id="phone" name="phone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="userType">I am a *</label>
+                                    <select id="userType" name="userType" required>
+                                        <option value="">Select type</option>
+                                        <option value="tenant">Tenant</option>
+                                        <option value="student">Student</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Inspection Details -->
+                        <div class="form-section">
+                            <h3>Inspection Details</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="inspectionDate">Preferred Date *</label>
+                                    <input type="date" id="inspectionDate" name="inspectionDate" required min="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inspectionTime">Preferred Time *</label>
+                                    <select id="inspectionTime" name="inspectionTime" required>
+                                        <option value="">Select time</option>
+                                        <option value="09:00">9:00 AM</option>
+                                        <option value="10:00">10:00 AM</option>
+                                        <option value="11:00">11:00 AM</option>
+                                        <option value="12:00">12:00 PM</option>
+                                        <option value="14:00">2:00 PM</option>
+                                        <option value="15:00">3:00 PM</option>
+                                        <option value="16:00">4:00 PM</option>
+                                    </select>
+                                </div>
+                                <div class="form-group full-width">
+                                    <label for="inspectionNotes">Additional Notes (Optional)</label>
+                                    <textarea id="inspectionNotes" name="inspectionNotes" rows="4" placeholder="Any specific areas you'd like to focus on during the inspection..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Number of People -->
+                        <div class="form-section">
+                            <h3>Inspection Party</h3>
+                            <div class="form-group">
+                                <label for="numberOfPeople">Number of people attending *</label>
+                                <select id="numberOfPeople" name="numberOfPeople" required>
+                                    <option value="">Select number</option>
+                                    <option value="1">1 person</option>
+                                    <option value="2">2 people</option>
+                                    <option value="3">3 people</option>
+                                    <option value="4">4 people</option>
+                                    <option value="5">5+ people</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Terms and Conditions -->
+                        <div class="form-section">
+                            <div class="terms-agreement">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                                    <span class="checkmark"></span>
+                                    I agree to the <a href="#" class="terms-link">Terms and Conditions</a> and understand that:
+                                </label>
+                                <ul class="terms-list">
+                                    <li>I must arrive on time for the scheduled inspection</li>
+                                    <li>I need to bring a valid ID for verification</li>
+                                    <li>Maximum inspection time is 30 minutes</li>
+                                    <li>I can bring up to 4 guests maximum</li>
+                                    <li>Photos and videos are allowed for personal reference only</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Form Actions -->
+                        <div class="form-actions">
+                            <button type="button" class="btn-secondary" onclick="goBackToProperty()">
+                                <i class="fas fa-arrow-left"></i>
+                                Back to Property
+                            </button>
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-calendar-check"></i>
+                                Book Inspection
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Next Steps Info -->
+            <section class="next-steps">
+                <h2>What Happens Next?</h2>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>Confirmation</h3>
+                        <p>You'll receive a confirmation email with inspection details and directions</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Inspection</h3>
+                        <p>Meet our agent at the property for your scheduled viewing</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon">
+                            <i class="fas fa-file-signature"></i>
+                        </div>
+                        <h3>Application</h3>
+                        <p>After inspection, proceed with your rental application</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div class="success-modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>Inspection Booked Successfully!</h2>
+                <button class="close-modal" onclick="closeSuccessModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="success-details">
+                    <p>Your property inspection has been scheduled successfully.</p>
+                    <div class="booking-summary">
+                        <h4>Booking Details:</h4>
+                        <div class="detail-item">
+                            <strong>Property:</strong>
+                            <span id="summaryPropertyTitle">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Date & Time:</strong>
+                            <span id="summaryDateTime">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Location:</strong>
+                            <span id="summaryLocation">-</span>
+                        </div>
+                    </div>
+                    <p class="confirmation-note">You will receive a confirmation email with all the details shortly.</p>
+                </div>
+                
+                <div class="modal-actions">
+                    <button class="btn-secondary" onclick="closeSuccessModal()">
+                        Book Another Inspection
+                    </button>
+                    <button class="btn-primary" onclick="proceedToApplication()">
+                        Proceed to Application
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="/JAVASCRIPT/book-inspection.js"></script>
+</body>
+</html>
