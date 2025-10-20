@@ -19,7 +19,7 @@
                 </div>
             </div>
 
-            <nav class="nav-links">
+            <!--<nav class="nav-links">
                 <a href="/index.html" class="nav-link">Home</a>
                 
                 <div class="nav-dropdown">
@@ -69,7 +69,7 @@
                         <span class="notification-badge">3</span>
                     </button>
                 </div>
-            </nav>
+            </nav>-->
 
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
@@ -82,30 +82,22 @@
         <div class="container">
             <!-- Progress Steps -->
             <div class="progress-steps">
-                <div class="step completed">
-                    <div class="step-number">1</div>
-                    <div class="step-label">Property Details</div>
-                </div>
-                <div class="step completed">
-                    <div class="step-number">2</div>
-                    <div class="step-label" id="step2Label">Book Inspection</div>
-                </div>
                 <div class="step active">
-                    <div class="step-number">3</div>
+                    <div class="step-number">1</div>
                     <div class="step-label">Complete Application</div>
                 </div>
                 <div class="step">
-                    <div class="step-number">4</div>
+                    <div class="step-number">2</div>
                     <div class="step-label">Screening</div>
                 </div>
                 <div class="step">
-                    <div class="step-number">5</div>
+                    <div class="step-number">3</div>
                     <div class="step-label">Payment</div>
                 </div>
             </div>
 
             <!-- Application Flow Options -->
-            <section class="flow-options-section" id="flowOptions" style="display: none;">
+            <!--<section class="flow-options-section" id="flowOptions" style="display: none;">
                 <div class="flow-header">
                     <h1>Choose Your Application Path</h1>
                     <p>Select how you'd like to proceed with your rental application</p>
@@ -138,13 +130,13 @@
                         <button class="flow-select-btn">Select This Option</button>
                     </div>
                 </div>
-            </section>
+            </section>-->
 
             <!-- Property Summary -->
             <section class="property-summary">
                 <div class="summary-header">
                     <h1>Complete Your Rental Application</h1>
-                    <p id="applicationSubtitle">Please fill in your details to apply for this property</p>
+                    <p id="applicationSubtitle">Please fill details to apply for this property</p>
                 </div>
 
                 <div class="property-card">
@@ -153,7 +145,7 @@
                     </div>
                     <div class="property-info">
                         <h3 id="applicationPropertyTitle">Property Title</h3>
-                        <div class="property-price" id="applicationPropertyPrice">₦0/year</div>
+                        <div class="property-price" id="applicationPropertyPrice">₦900,000/year</div>
                         <div class="property-location">
                             <i class="fas fa-map-marker-alt"></i>
                             <span id="applicationPropertyLocation">Location</span>
@@ -179,8 +171,8 @@
             <!-- Application Form -->
             <section class="application-form-section">
                 <div class="form-container">
-                    <h2>Create Your Account & Apply</h2>
-                    <p>Fill in your personal details to create an account and submit your application</p>
+                    <h2>Next of Kin</h2>
+                    <p>For Emergency Purposes</p>
 
                     <form id="applicationForm" class="application-form">
                         <!-- User Type Tracking (Hidden) -->
@@ -189,7 +181,7 @@
                         <input type="hidden" id="propertyId" name="propertyId">
 
                         <!-- Personal Information -->
-                        <div class="form-section">
+                        <!--<div class="form-section">
                             <h3>Personal Information</h3>
                             <div class="form-grid">
                                 <div class="form-group">
@@ -223,10 +215,10 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
 
                         <!-- Account Security -->
-                        <div class="form-section">
+                        <!--<div class="form-section">
                             <h3>Account Security</h3>
                             <div class="form-grid">
                                 <div class="form-group">
@@ -239,12 +231,12 @@
                                     <input type="password" id="confirmPassword" name="confirmPassword" required>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
 
                         <!-- User Type Specific Sections -->
                         
                         <!-- Student Specific Fields -->
-                        <div class="form-section student-specific" id="studentSection" style="display: none;">
+                        <!--<div class="form-section student-specific" id="studentSection" style="display: none;">
                             <h3>Student Information</h3>
                             <div class="form-grid">
                                 <div class="form-group">
@@ -284,7 +276,7 @@
                                     <input type="tel" id="guardianPhone" name="guardianPhone">
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
 
                         <!-- Tenant Specific Fields -->
                         <div class="form-section tenant-specific" id="tenantSection" style="display: none;">
@@ -307,7 +299,6 @@
                                         <option value="self-employed">Self-employed</option>
                                         <option value="contract">Contract</option>
                                         <option value="unemployed">Unemployed</option>
-                                        <option value="student">Student</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -371,7 +362,7 @@
                             </button>
                             <button type="submit" class="btn-primary">
                                 <i class="fas fa-user-plus"></i>
-                                Create Account & Continue
+                                Proceed
                             </button>
                         </div>
                     </form>
@@ -387,7 +378,7 @@
                 <div class="success-icon">
                     <i class="fas fa-check-circle"></i>
                 </div>
-                <h2>Application Submitted Successfully!</h2>
+                <h2>Move on to next</h2>
                 <button class="close-modal" onclick="closeSuccessModal()">
                     <i class="fas fa-times"></i>
                 </button>
@@ -395,7 +386,7 @@
             
             <div class="modal-body">
                 <div class="success-details">
-                    <p>Your account has been created and your application is being processed.</p>
+                    <p>Move On.</p>
                     <div class="application-summary">
                         <h4>Application Details:</h4>
                         <div class="detail-item">
@@ -415,13 +406,10 @@
                             <span id="summaryNextStep">-</span>
                         </div>
                     </div>
-                    <p class="confirmation-note">Please check your email for verification and next steps.</p>
+                    <p class="confirmation-note">Please check your dashbaord notification for verification and next steps.</p>
                 </div>
                 
                 <div class="modal-actions">
-                    <button class="btn-secondary" onclick="closeSuccessModal()">
-                        View Dashboard
-                    </button>
                     <button class="btn-primary" onclick="proceedToScreening()">
                         Proceed to Screening
                         <i class="fas fa-arrow-right"></i>

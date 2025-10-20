@@ -3,6 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Theme Color for Mobile Browsers -->
+    <meta name="theme-color" content="#0e1f42">
+
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="DomiHive">
+
+    <!-- Icons for iOS -->
+    <link rel="apple-touch-icon" href="ASSECT/icon-192.png">
+
+    <!-- Windows -->
+    <meta name="msapplication-TileColor" content="#0e1f42">
     <title>DomiHive - Professional Property Management</title>
     <link rel="stylesheet" href="/CSS/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -23,15 +39,18 @@
             <!-- Navigation Links -->
             <nav class="nav-links">
                 <a href="/index.html" class="nav-link active">Home</a>
-                <a href="/Pages/rent.html" class="nav-link">Rent</a>
+                
+                
+                
+                <a href="/Pages/rent.html" class="nav-link">Rent <i class="fas fa-chevron-down"></i></a>
 
                 <!-- Vertical Separator -->
                 <div class="nav-separator"></div>
 
                 <!-- Login Dropdown -->
                 <div class="nav-dropdown">
-                    <a href="/Pages/signup.html" class="nav-link">Sign up</a>
-                    <!--<div class="dropdown-menu">
+                    <a href="#" class="nav-link">Login <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
                         <a href="#" class="dropdown-item">
                             <i class="fas fa-graduation-cap"></i>
                             Student Login
@@ -40,7 +59,7 @@
                             <i class="fas fa-home"></i>
                             Tenant Login
                         </a>
-                    </div>-->
+                    </div>
                 </div>
 
                 <!-- Navigation Icons -->
@@ -48,6 +67,12 @@
                     <!-- Theme Toggle -->
                     <button class="nav-icon theme-toggle" title="Toggle Theme">
                         <i class="fas fa-moon"></i>
+                    </button>
+                    
+                    <!-- Notifications -->
+                    <button class="nav-icon" title="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
                     </button>
                     
                     <!-- Favorites -->
@@ -402,9 +427,9 @@
                                     <div class="app-screen" data-screen="properties">
                                         <div class="app-properties">
                                             <div class="app-header">
-                                                <i class="fas fa-arrow-left back-btn"></i>
+                                                <i class="fas fa-arrow-left"></i>
                                                 <h4>Browse Properties</h4>
-                                                <i class="fas fa-filter filter-btn"></i>
+                                                <i class="fas fa-filter"></i>
                                             </div>
                                             <div class="search-bar">
                                                 <i class="fas fa-search"></i>
@@ -425,7 +450,6 @@
                                                     </div>
                                                 </div>
                                                 <div class="property-item">
-                                                    <div class="property-badge">Available</div>
                                                     <div class="property-image" style="background: linear-gradient(135deg, #f5c1bc, #f2a9a3);"></div>
                                                     <div class="property-info">
                                                         <h5>2-Bedroom Flat</h5>
@@ -444,9 +468,9 @@
                                     <div class="app-screen" data-screen="payments">
                                         <div class="app-payments">
                                             <div class="app-header">
-                                                <i class="fas fa-arrow-left back-btn"></i>
+                                                <i class="fas fa-arrow-left"></i>
                                                 <h4>Payments</h4>
-                                                <i class="fas fa-history history-btn"></i>
+                                                <i class="fas fa-history"></i>
                                             </div>
                                             <div class="balance-card">
                                                 <div class="balance-label">Current Balance</div>
@@ -470,9 +494,9 @@
                                     <div class="app-screen" data-screen="maintenance">
                                         <div class="app-maintenance">
                                             <div class="app-header">
-                                                <i class="fas fa-arrow-left back-btn"></i>
+                                                <i class="fas fa-arrow-left"></i>
                                                 <h4>Maintenance</h4>
-                                                <i class="fas fa-plus add-btn"></i>
+                                                <i class="fas fa-plus"></i>
                                             </div>
                                             <div class="maintenance-list">
                                                 <div class="maintenance-item completed">
@@ -481,7 +505,7 @@
                                                     </div>
                                                     <div class="maintenance-info">
                                                         <h5>Leaking Faucet</h5>
-                                                        <p>Kitchen sink - Submitted 2 days ago</p>
+                                                        <p>Kitchen sink</p>
                                                         <span class="status completed">Completed</span>
                                                     </div>
                                                 </div>
@@ -491,7 +515,7 @@
                                                     </div>
                                                     <div class="maintenance-info">
                                                         <h5>AC Repair</h5>
-                                                        <p>Living room unit - Submitted yesterday</p>
+                                                        <p>Living room unit</p>
                                                         <span class="status in-progress">In Progress</span>
                                                     </div>
                                                 </div>
@@ -608,24 +632,13 @@
                         <div class="app-download">
                             <div class="qr-container">
                                 <div class="qr-code">
-                                    <div class="qr-grid">
-                                        <div class="qr-row">
-                                            <div class="qr-cell black"></div><div class="qr-cell black"></div><div class="qr-cell black"></div><div class="qr-cell black"></div><div class="qr-cell black"></div>
-                                        </div>
-                                        <div class="qr-row">
-                                            <div class="qr-cell black"></div><div class="qr-cell white"></div><div class="qr-cell white"></div><div class="qr-cell white"></div><div class="qr-cell black"></div>
-                                        </div>
-                                        <div class="qr-row">
-                                            <div class="qr-cell black"></div><div class="qr-cell white"></div><div class="qr-cell black"></div><div class="qr-cell white"></div><div class="qr-cell black"></div>
-                                        </div>
-                                        <div class="qr-row">
-                                            <div class="qr-cell black"></div><div class="qr-cell white"></div><div class="qr-cell white"></div><div class="qr-cell white"></div><div class="qr-cell black"></div>
-                                        </div>
-                                        <div class="qr-row">
-                                            <div class="qr-cell black"></div><div class="qr-cell black"></div><div class="qr-cell black"></div><div class="qr-cell black"></div><div class="qr-cell black"></div>
-                                        </div>
+                                    <div class="qr-pattern">
+                                        <div class="qr-corner top-left"></div>
+                                        <div class="qr-corner top-right"></div>
+                                        <div class="qr-corner bottom-left"></div>
+                                        <div class="qr-dots"></div>
                                     </div>
-                                    <div class="qr-logo-center">
+                                    <div class="qr-logo">
                                         <img src="/ASSECT/Logo Design_ DomiHive saas 2.png" alt="DomiHive">
                                     </div>
                                 </div>
@@ -1006,6 +1019,20 @@
         </div>
     </footer>
 
-    <script src="/JAVASCRIPT/home.js"></script>
+    <script src="JAVASCRIPT/home.js"></script>
+    <!-- Register Service Worker -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/sw.js')
+            .then(function(registration) {
+              console.log('Service Worker registered with scope:', registration.scope);
+            })
+            .catch(function(error) {
+              console.log('Service Worker registration failed:', error);
+            });
+        });
+      }
+    </script>
 </body>
 </html>

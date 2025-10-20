@@ -1,5 +1,6 @@
-/* rent.css - Navigation Styles Only */
+/* rent.css - Complete Styles with Light Signup Modal */
 
+/* ===== EXISTING NAVIGATION STYLES ===== */
 /* Favorite Counter */
 .favorite-counter {
     position: relative;
@@ -28,7 +29,7 @@
     gap: 0.5rem;
 }
 
-/* Active State for Rent Dropdown */
+/* Active State for Rent Link */
 .nav-link.active {
     color: var(--accent-color);
     font-weight: 600;
@@ -46,6 +47,31 @@
     border-radius: 2px;
 }
 
+/* Auth Buttons */
+.auth-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.auth-btn {
+    background: none;
+    border: none;
+    color: var(--dark-gray);
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.auth-btn:hover {
+    background: rgba(14, 31, 66, 0.05);
+    color: var(--primary-color);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-actions {
@@ -57,6 +83,466 @@
     }
 }
 
+/* ===== LIGHT SIGNUP MODAL STYLES ===== */
+.signup-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+}
+
+.signup-modal-container {
+    position: relative;
+    z-index: 10001;
+    width: 90%;
+    max-width: 1000px;
+    max-height: 90vh;
+    overflow: hidden;
+}
+
+.signup-modal-content {
+    display: flex;
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    height: 600px;
+}
+
+/* Left Side - Background */
+.signup-modal-left {
+    flex: 1;
+    position: relative;
+    background: linear-gradient(135deg, rgba(14, 31, 66, 0.9) 0%, rgba(26, 45, 95, 0.8) 100%);
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.signup-modal-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/ASSECT/herobackground\(1\).jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.4;
+}
+
+.signup-modal-overlay-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 400px;
+}
+
+.signup-modal-logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 2rem;
+    filter: brightness(0) invert(1);
+}
+
+.signup-modal-left h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.signup-modal-left p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    line-height: 1.5;
+}
+
+/* Right Side - Form */
+.signup-modal-right {
+    flex: 1;
+    position: relative;
+    padding: 3rem;
+    overflow-y: auto;
+}
+
+.signup-modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--gray);
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.signup-modal-close:hover {
+    background: var(--light-gray);
+    color: var(--primary-color);
+}
+
+.signup-form-container h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.signup-subtitle {
+    color: var(--gray);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+}
+
+/* Social Signup Buttons */
+.social-signup-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.social-btn {
+    padding: 1rem 1.5rem;
+    border: 2px solid var(--gray-light);
+    border-radius: 12px;
+    background: var(--white);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-size: 1rem;
+}
+
+.social-btn.google-btn {
+    color: #4285F4;
+    border-color: #4285F4;
+}
+
+.social-btn.apple-btn {
+    color: #000000;
+    border-color: #000000;
+}
+
+.social-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.social-btn.google-btn:hover {
+    background: #4285F4;
+    color: white;
+}
+
+.social-btn.apple-btn:hover {
+    background: #000000;
+    color: white;
+}
+
+/* Divider */
+.signup-divider {
+    position: relative;
+    text-align: center;
+    margin: 2rem 0;
+    color: var(--gray);
+}
+
+.signup-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--gray-light);
+}
+
+.signup-divider span {
+    background: var(--white);
+    padding: 0 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Phone Signup Form */
+.phone-signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+}
+
+.form-group input {
+    padding: 1rem;
+    border: 2px solid var(--gray-light);
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: var(--white);
+}
+
+.form-group input:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(159, 117, 57, 0.1);
+}
+
+.form-group input.error {
+    border-color: #dc2626;
+    background: #fef2f2;
+}
+
+/* Phone Input Container */
+.phone-input-container {
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--gray-light);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.phone-input-container:focus-within {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(159, 117, 57, 0.1);
+}
+
+.phone-input-container.error {
+    border-color: #dc2626;
+    background: #fef2f2;
+}
+
+.country-code {
+    padding: 1rem;
+    background: var(--light-gray);
+    color: var(--dark-gray);
+    font-weight: 600;
+    border-right: 2px solid var(--gray-light);
+    min-width: 80px;
+    text-align: center;
+}
+
+.phone-input-container input {
+    flex: 1;
+    border: none;
+    border-radius: 0;
+    padding: 1rem;
+}
+
+.phone-input-container input:focus {
+    border: none;
+    box-shadow: none;
+}
+
+/* Checkbox Group */
+.checkbox-group {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-top: 0.2rem;
+    accent-color: var(--accent-color);
+}
+
+.checkbox-group label {
+    font-weight: normal;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    flex: 1;
+}
+
+.terms-link {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.terms-link:hover {
+    text-decoration: underline;
+}
+
+/* Error Messages */
+.error-message {
+    color: #dc2626;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+    display: none;
+}
+
+.error-message.show {
+    display: block;
+}
+
+/* Submit Button */
+.signup-submit-btn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.signup-submit-btn:hover:not(:disabled) {
+    background: #b58a4a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(159, 117, 57, 0.3);
+}
+
+.signup-submit-btn:disabled {
+    background: var(--gray);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-loading {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Signup Footer */
+.signup-footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--gray-light);
+}
+
+.signup-footer p {
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+.login-link {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-link:hover {
+    text-decoration: underline;
+}
+
+/* Success State */
+.signup-success {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.signup-success i {
+    font-size: 3rem;
+    color: #10b981;
+    margin-bottom: 1rem;
+}
+
+.signup-success h4 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.signup-success p {
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+}
+
+/* ===== RESPONSIVE DESIGN FOR MODAL ===== */
+@media (max-width: 768px) {
+    .signup-modal-content {
+        flex-direction: column;
+        height: auto;
+        max-height: 90vh;
+    }
+    
+    .signup-modal-left {
+        display: none; /* Hide background on mobile */
+    }
+    
+    .signup-modal-right {
+        padding: 2rem 1.5rem;
+    }
+    
+    .signup-modal-container {
+        width: 95%;
+    }
+    
+    .social-signup-buttons {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .signup-modal-right {
+        padding: 1.5rem 1rem;
+    }
+    
+    .signup-form-container h3 {
+        font-size: 1.5rem;
+    }
+    
+    .social-btn {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* ===== EXISTING RENT HERO SECTION STYLES ===== */
 /* Rent Hero Section Styles */
 .rent-hero {
     position: relative;
@@ -122,7 +608,7 @@
     bottom: -48px;
     width: calc(100% - 2rem);
     max-width: 1150px;
-    z-index: 1000; /* Increased z-index for proper stacking */
+    z-index: 1000;
     padding: 1rem;
     pointer-events: auto;
 }
@@ -138,7 +624,7 @@
     border: 1px solid rgba(15, 23, 42, 0.05);
 }
 
-/* Tabs */
+/* Tabs - UPDATED FOR 5 TABS */
 .tabs {
     display: flex;
     gap: 8px;
@@ -155,6 +641,8 @@
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
+    font-size: 0.9rem;
+    white-space: nowrap;
 }
 
 .tab.active {
@@ -168,7 +656,7 @@
     color: var(--white);
 }
 
-/* Filters grid */
+/* Filters grid - UPDATED FOR BETTER LAYOUT */
 .filters {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -176,7 +664,7 @@
     align-items: center;
 }
 
-/* FIX: Select wrapper for proper dropdown positioning */
+/* Select wrapper for proper dropdown positioning */
 .filter-select-wrapper {
     position: relative;
     display: block;
@@ -240,11 +728,11 @@
     box-shadow: 0 8px 25px rgba(159, 117, 57, 0.3);
 }
 
-/* Select styling - FIXED DROPDOWN POSITIONING */
+/* Select styling */
 select {
     width: 100%;
     min-width: 0;
-    padding: 10px 32px 10px 12px; /* Added right padding for arrow */
+    padding: 10px 32px 10px 12px;
     font-size: 0.95rem;
     border-radius: 10px;
     border: 1px solid var(--gray-light);
@@ -280,10 +768,15 @@ select option {
     margin-top: 6px;
 }
 
-/* Responsiveness */
+/* Responsiveness - UPDATED FOR 5 TABS */
 @media (max-width: 1200px) {
     .filters { 
         grid-template-columns: repeat(4, 1fr); 
+    }
+    
+    .tab {
+        font-size: 0.85rem;
+        padding: 8px 12px;
     }
 }
 
@@ -298,6 +791,15 @@ select option {
     .search-wrap { 
         bottom: -56px; 
         padding: 0 12px; 
+    }
+    
+    .tabs {
+        gap: 6px;
+    }
+    
+    .tab {
+        font-size: 0.8rem;
+        padding: 6px 10px;
     }
 }
 
@@ -326,13 +828,32 @@ select option {
     }
     .tabs {
         flex-direction: column;
+        gap: 4px;
     }
     .tab {
         width: 100%;
+        font-size: 0.85rem;
+        padding: 8px 12px;
     }
 }
 
-/*  =====Properties Grid Section Styles====== */
+/* Extra small devices */
+@media (max-width: 380px) {
+    .tab {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+    
+    .hero-title {
+        font-size: 1.4rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.9rem;
+    }
+}
+
+/* ===== Properties Grid Section Styles ===== */
 .properties-section {
     padding: 4rem 0;
     background: var(--light-gray);
@@ -392,7 +913,7 @@ select option {
     align-items: center;
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid var
+    border-bottom: 1px solid var(--gray-light);
 }
 
 .filter-header h3 {
@@ -740,7 +1261,7 @@ select option {
 }
 
 .badge-verified {
-    background: var(--success);
+    background: #10b981;
     color: var(--white);
 }
 
@@ -1009,7 +1530,7 @@ select option {
     transform: translateY(-2px);
 }
 
-/*Responsive Desgin*/
+/* Responsive Design */
 
 /* Tablets */
 @media (max-width: 1024px) {
@@ -1148,20 +1669,97 @@ select option {
     }
 }
 
-/* Dark Mode Support */
+/* Dark Mode Support - IMPROVED */
 body.dark-mode .properties-section {
-    background: var(--white);
+    background: #1a1a1a;
 }
 
 body.dark-mode .filter-sidebar,
 body.dark-mode .properties-grid-container,
 body.dark-mode .property-card {
-    background: var(--white);
+    background: #2d2d2d;
     border-color: rgba(255, 255, 255, 0.1);
 }
 
 body.dark-mode .filter-option span {
-    color: var(--dark-gray);
+    color: #e0e0e0;
+}
+
+body.dark-mode .search-box {
+    background: #2d2d2d;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode select {
+    background: #2d2d2d;
+    color: #e0e0e0;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .search-input {
+    background: #2d2d2d;
+    color: #e0e0e0;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .tab {
+    background: #3d3d3d;
+    color: #e0e0e0;
+}
+
+body.dark-mode .tab.active {
+    background: var(--accent-color);
+    color: var(--white);
+}
+
+/* Dark mode for signup modal */
+body.dark-mode .signup-modal-content {
+    background: #2d2d2d;
+    color: #e0e0e0;
+}
+
+body.dark-mode .signup-modal-right {
+    background: #2d2d2d;
+}
+
+body.dark-mode .signup-form-container h3 {
+    color: #e0e0e0;
+}
+
+body.dark-mode .form-group input {
+    background: #3d3d3d;
+    border-color: #555;
+    color: #e0e0e0;
+}
+
+body.dark-mode .form-group input:focus {
+    border-color: var(--accent-color);
+}
+
+body.dark-mode .country-code {
+    background: #3d3d3d;
+    color: #e0e0e0;
+    border-color: #555;
+}
+
+body.dark-mode .social-btn {
+    background: #3d3d3d;
+    border-color: #555;
+    color: #e0e0e0;
+}
+
+body.dark-mode .social-btn.google-btn:hover {
+    background: #4285F4;
+    color: white;
+}
+
+body.dark-mode .social-btn.apple-btn:hover {
+    background: #000000;
+    color: white;
+}
+
+body.dark-mode .signup-divider span {
+    background: #2d2d2d;
 }
 
 /* Smooth scrolling for filter sidebar */

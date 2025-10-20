@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const locationSelect = document.getElementById('locationSelect');
     const doSearchBtn = document.getElementById('doSearch');
 
-    // PROPERTY OPTIONS FOR EACH TAB
+    // PROPERTY OPTIONS FOR ALL 5 TABS
     const propertyOptions = {
         rent: [
             "Apartment", 
@@ -38,6 +38,25 @@ document.addEventListener('DOMContentLoaded', function() {
             "Co-working Space",
             "Retail Space",
             "Industrial Property"
+        ],
+        student: [
+            "Student Hostel",
+            "Shared Room",
+            "Private Room", 
+            "Studio Apartment",
+            "Campus Housing",
+            "Off-Campus Housing",
+            "Student Lodge"
+        ],
+        buy: [
+            "Residential Apartment",
+            "Detached House",
+            "Semi-Detached House", 
+            "Terrace House",
+            "Duplex",
+            "Bungalow",
+            "Land/Plot",
+            "Commercial Property"
         ]
     };
 
@@ -113,8 +132,16 @@ document.addEventListener('DOMContentLoaded', function() {
             const selectedType = tab.getAttribute('data-type');
             populateTypeOptions(selectedType);
             
-            // Update search placeholder
-            searchInput.placeholder = `Search for ${selectedType} properties — e.g. "Lekki 3 bedroom"`;
+            // Update search placeholder based on tab
+            const placeholders = {
+                rent: 'Search for rental properties — e.g. "Lekki 3 bedroom"',
+                shortlet: 'Search for shortlet properties — e.g. "VI luxury apartment"',
+                commercial: 'Search for commercial properties — e.g. "Ikeja office space"',
+                student: 'Search for student housing — e.g. "Yaba hostel"',
+                buy: 'Search for properties to buy — e.g. "Lekki 4 bedroom house"'
+            };
+            
+            searchInput.placeholder = placeholders[selectedType] || 'Search properties...';
             
             console.log(`🏠 Tab switched to: ${selectedType}`);
         });
@@ -130,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Search handler - FIXED VERSION
+    // Search handler - REAL ACTION (no prompts)
     doSearchBtn.addEventListener('click', (e) => {
         e.preventDefault();
         
@@ -168,26 +195,8 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelector('.properties-section')?.scrollIntoView({ 
                 behavior: 'smooth' 
             });
-        } else {
-            // Show alert for demo
-            showSearchSummary(searchCriteria);
         }
     });
-
-    // Show search summary (for demo)
-    function showSearchSummary(criteria) {
-        let summary = "Search Criteria:\n\n";
-        
-        if (criteria.query) summary += `🔍 Search: ${criteria.query}\n`;
-        if (criteria.areaType) summary += `📍 Area: ${criteria.areaType}\n`;
-        if (criteria.location) summary += `🏠 Location: ${criteria.location}\n`;
-        if (criteria.propertyType) summary += `🏡 Type: ${criteria.propertyType}\n`;
-        if (criteria.bedrooms) summary += `🛏️ Bedrooms: ${criteria.bedrooms}\n`;
-        if (criteria.minPrice) summary += `💰 Min Price: ₦${parseInt(criteria.minPrice).toLocaleString()}/year\n`;
-        if (criteria.maxPrice) summary += `💰 Max Price: ₦${parseInt(criteria.maxPrice).toLocaleString()}/year\n`;
-        
-        alert(summary + "\n\n🚀 Properties grid will show filtered results!");
-    }
 
     // Keyboard accessibility - press Enter to search
     searchInput.addEventListener('keydown', (e) => {
@@ -204,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Clear any previous search
         searchInput.value = '';
         
-        console.log('🎯 Rent Hero Search Initialized');
+        console.log('🎯 Rent Hero Search Initialized with 5 tabs');
     }
 
     // Start initialization
@@ -288,107 +297,75 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function generateSampleProperties() {
-    const propertyTypes = ['apartment', 'house', 'duplex', 'studio', 'shared'];
-    const locations = {
-        mainland: [
-            'Ikeja GRA', 'Yaba', 'Surulere', 'Ojota', 'Oshodi', 'Ilupeju',
-            'Egbeda', 'Maryland', 'Ikorodu', 'Agege', 'Festac Town', 'Gbagada',
-            'Mushin', 'Mende', 'Ogba', 'Alausa', 'Anthony', 'Palmgroove'
-        ],
-        island: [
-            'Ikoyi', 'Lekki Phase 1', 'Victoria Island', 'Ajah', 'Sangotedo',
-            'Chevron', 'Oniru', 'Banana Island', 'Lekki Phase 2', 'VGC'
-        ]
-    };
-    
-    const amenitiesList = ['wifi', 'parking', 'security', 'pool', 'gym', 'ac', 'generator', 'water'];
-    
-    // REAL PROPERTY IMAGES - Apartments, Houses, Commercial, Hostels, Rooms
-const propertyImages = [
-    // ===== APARTMENTS =====
-    'https://images.unsplash.com/photo-1545323157-f6f63c0d66a7?w=800&h=600&fit=crop', // Modern apartment
-    'https://images.unsplash.com/photo-1564019471349-34e8a875c5c8?w=800&h=600&fit=crop', // Apartment interior
-    'https://images.unsplash.com/photo-1560448078-8b7a9c7b7c7c?w=800&h=600&fit=crop', // Luxury apartment
-    
-    // ===== HOUSES =====
-    'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&h=600&fit=crop', // Modern house
-    'https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=800&h=600&fit=crop', // Beautiful home
-    'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&h=600&fit=crop', // Suburban house
-    
-    // ===== LIVING ROOMS =====
-    'https://images.unsplash.com/photo-1567496898662-9f5c56f86314?w=800&h=600&fit=crop', // Luxury living room
-    'https://images.unsplash.com/photo-1582263989365-b4cd47d4d9a9?w=800&h=600&fit=crop', // Modern living space
-    'https://images.unsplash.com/photo-1560185893-4c7b8b8b8b8b?w=800&h=600&fit=crop', // Cozy living area
-    
-    // ===== BEDROOMS =====
-    'https://images.unsplash.com/photo-1586023494248-875d6f6f0f73?w=800&h=600&fit=crop', // Cozy bedroom
-    'https://images.unsplash.com/photo-1554995201-8cec4b1d1b7a?w=800&h=600&fit=crop', // Modern bedroom
-    'https://images.unsplash.com/photo-1560185893-4c7b8b8b8b8c?w=800&h=600&fit=crop', // Luxury bedroom
-    
-    // ===== HOSTELS & SHARED SPACES =====
-    'https://images.unsplash.com/photo-1555854871-d330a3f863d6?w=800&h=600&fit=crop', // Hostel room
-    'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop', // Shared apartment
-    'https://images.unsplash.com/photo-1564078516393-cf04bd966897?w=800&h=600&fit=crop', // Student accommodation
-    
-    // ===== COMMERCIAL PROPERTIES =====
-    'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&h=600&fit=crop', // Office space
-    'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=600&fit=crop', // Commercial building
-    'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop', // Modern office
-    'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop', // Retail space
-    'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&h=600&fit=crop', // Co-working space
-    
-    // ===== KITCHENS =====
-    'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop', // Modern kitchen
-    'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop', // Luxury kitchen
-    
-    // ===== BATHROOMS =====
-    'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&h=600&fit=crop', // Modern bathroom
-    'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&h=600&fit=crop', // Luxury bathroom
-    
-    // ===== EXTERIORS =====
-    
-    'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&h=600&fit=crop', // House exterior
-    'https://images.unsplash.com/photo-1513584684374-8bab748fbf90?w=800&h=600&fit=crop'  // Apartment building
-];
-    
-    // Generate 84 properties
-    for (let i = 1; i <= 84; i++) {
-        const isMainland = Math.random() > 0.5;
-        const area = isMainland ? 'mainland' : 'island';
-        const locationArray = locations[area];
-        const randomLocation = locationArray[Math.floor(Math.random() * locationArray.length)];
+        const propertyTypes = ['apartment', 'house', 'duplex', 'studio', 'shared'];
+        const locations = {
+            mainland: [
+                'Ikeja GRA', 'Yaba', 'Surulere', 'Ojota', 'Oshodi', 'Ilupeju',
+                'Egbeda', 'Maryland', 'Ikorodu', 'Agege', 'Festac Town', 'Gbagada',
+                'Mushin', 'Mende', 'Ogba', 'Alausa', 'Anthony', 'Palmgroove'
+            ],
+            island: [
+                'Ikoyi', 'Lekki Phase 1', 'Victoria Island', 'Ajah', 'Sangotedo',
+                'Chevron', 'Oniru', 'Banana Island', 'Lekki Phase 2', 'VGC'
+            ]
+        };
         
-        // Pick RANDOM images from our expanded list - ensures variety
+        const amenitiesList = ['wifi', 'parking', 'security', 'pool', 'gym', 'ac', 'generator', 'water'];
+        
+        // Property images array
+        const propertyImages = [
+            'https://images.unsplash.com/photo-1545323157-f6f63c0d66a7?w=800&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1564019471349-34e8a875c5c8?w=800&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1560448078-8b7a9c7b7c7c?w=800&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&h=600&fit=crop',
+            'https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=800&h=600&fit=crop'
+        ];
+        
+        // Generate 84 properties with mixed types
+        for (let i = 1; i <= 84; i++) {
+            const isMainland = Math.random() > 0.5;
+            const area = isMainland ? 'mainland' : 'island';
+            const locationArray = locations[area];
+            const randomLocation = locationArray[Math.floor(Math.random() * locationArray.length)];
+            
+            // Assign property types based on categories
+            let propertyCategory = 'rent';
+            if (i > 60) propertyCategory = 'buy';
+            else if (i > 45) propertyCategory = 'student';
+            else if (i > 30) propertyCategory = 'commercial';
+            else if (i > 15) propertyCategory = 'shortlet';
+            
             const img1 = propertyImages[Math.floor(Math.random() * propertyImages.length)];
             const img2 = propertyImages[Math.floor(Math.random() * propertyImages.length)];
             const img3 = propertyImages[Math.floor(Math.random() * propertyImages.length)];
-        
-        const property = {
-            id: i,
-            title: `${getRandomPropertyType()} in ${randomLocation}`,
-            price: getRandomPrice(area),
-            location: randomLocation,
-            area: area,
-            type: propertyTypes[Math.floor(Math.random() * propertyTypes.length)],
-            bedrooms: Math.floor(Math.random() * 4) + 1,
-            bathrooms: Math.floor(Math.random() * 3) + 1,
-            size: `${Math.floor(Math.random() * 200) + 50} sqm`,
-            furnishing: ['furnished', 'semi-furnished', 'unfurnished'][Math.floor(Math.random() * 3)],
-            amenities: getRandomAmenities(amenitiesList),
-            petsAllowed: Math.random() > 0.7,
-            age: ['new', 'modern', 'established'][Math.floor(Math.random() * 3)],
-            images: [img1, img2, img3],
-            isVerified: Math.random() > 0.2,
-            isFeatured: Math.random() > 0.8,
-            isNew: i > 60,
-            description: `Beautiful ${getRandomPropertyType()} located in the heart of ${randomLocation}. This property offers modern amenities and comfortable living spaces.`,
-            dateAdded: new Date(Date.now() - Math.random() * 90 * 24 * 60 * 60 * 1000)
-        };
-        
-        allProperties.push(property);
-       }
+            
+            const property = {
+                id: i,
+                title: `${getRandomPropertyType()} in ${randomLocation}`,
+                price: getRandomPrice(area, propertyCategory),
+                location: randomLocation,
+                area: area,
+                category: propertyCategory,
+                type: propertyTypes[Math.floor(Math.random() * propertyTypes.length)],
+                bedrooms: Math.floor(Math.random() * 4) + 1,
+                bathrooms: Math.floor(Math.random() * 3) + 1,
+                size: `${Math.floor(Math.random() * 200) + 50} sqm`,
+                furnishing: ['furnished', 'semi-furnished', 'unfurnished'][Math.floor(Math.random() * 3)],
+                amenities: getRandomAmenities(amenitiesList),
+                petsAllowed: Math.random() > 0.7,
+                age: ['new', 'modern', 'established'][Math.floor(Math.random() * 3)],
+                images: [img1, img2, img3],
+                isVerified: Math.random() > 0.2,
+                isFeatured: Math.random() > 0.8,
+                isNew: i > 60,
+                description: `Beautiful ${getRandomPropertyType()} located in the heart of ${randomLocation}. This property offers modern amenities and comfortable living spaces.`,
+                dateAdded: new Date(Date.now() - Math.random() * 90 * 24 * 60 * 60 * 1000)
+            };
+            
+            allProperties.push(property);
+        }
     
-    filteredProperties = [...allProperties];
+        filteredProperties = [...allProperties];
     }
 
     function getRandomPropertyType() {
@@ -396,9 +373,27 @@ const propertyImages = [
         return types[Math.floor(Math.random() * types.length)];
     }
 
-    function getRandomPrice(area) {
-        const basePrice = area === 'island' ? 800000 : 400000;
-        const variation = Math.random() * 400000;
+    function getRandomPrice(area, category) {
+        let basePrice = 400000; // Default for rent
+        
+        switch(category) {
+            case 'buy':
+                basePrice = area === 'island' ? 80000000 : 40000000; // Millions for buying
+                break;
+            case 'shortlet':
+                basePrice = area === 'island' ? 1200000 : 600000; // Higher for shortlets
+                break;
+            case 'commercial':
+                basePrice = area === 'island' ? 1500000 : 800000; // Commercial rates
+                break;
+            case 'student':
+                basePrice = area === 'island' ? 600000 : 300000; // Student rates
+                break;
+            default: // rent
+                basePrice = area === 'island' ? 800000 : 400000;
+        }
+        
+        const variation = Math.random() * (basePrice * 0.5); // 50% variation
         return Math.floor(basePrice + variation);
     }
 
@@ -414,6 +409,13 @@ const propertyImages = [
             try {
                 const criteria = JSON.parse(savedSearch);
                 console.log('🔍 Applying saved search criteria:', criteria);
+                
+                // Filter properties by category first
+                if (criteria.action) {
+                    filteredProperties = allProperties.filter(property => 
+                        property.category === criteria.action
+                    );
+                }
                 
                 // Apply basic filters from hero search
                 if (criteria.areaType) {
@@ -467,7 +469,7 @@ const propertyImages = [
 
     function getCurrentFilters() {
         const minPriceValue = parseInt(document.getElementById('minPrice').value) || 0;
-        const maxPriceValue = parseInt(document.getElementById('maxPrice').value) || 100000000; // Use large number instead of Infinity
+        const maxPriceValue = parseInt(document.getElementById('maxPrice').value) || 100000000;
         
         const filters = {
             priceRange: {
@@ -493,7 +495,7 @@ const propertyImages = [
     }
 
     function matchesAllFilters(property, filters) {
-        // Price range - FIXED: Using finite number instead of Infinity
+        // Price range
         if (property.price < filters.priceRange.min || property.price > filters.priceRange.max) {
             return false;
         }
@@ -533,7 +535,7 @@ const propertyImages = [
             return false;
         }
         
-        // Pets - FIXED: Proper logic for pet filters
+        // Pets
         if (filters.pets.length > 0) {
             if (filters.pets.includes('allowed') && !property.petsAllowed) return false;
             if (filters.pets.includes('not-allowed') && property.petsAllowed) return false;
@@ -591,7 +593,7 @@ const propertyImages = [
             resultsCount.textContent = filteredProperties.length + '+';
         }
         
-        // Show/hide load more button - FIXED: Proper calculation
+        // Show/hide load more button
         const totalDisplayed = Math.min(endIndex, filteredProperties.length);
         const hasMoreProperties = totalDisplayed < filteredProperties.length;
         
@@ -609,6 +611,7 @@ const propertyImages = [
         console.log(`📄 Displaying ${totalDisplayed} of ${filteredProperties.length} properties (Page ${currentPage})`);
     }
 
+    // MISSING FUNCTION ADDED BACK
     function showNoResultsMessage() {
         propertiesGrid.innerHTML = `
             <div class="no-results">
@@ -630,6 +633,7 @@ const propertyImages = [
         `;
     }
 
+    // MISSING FUNCTION ADDED BACK - createPropertyCard
     function createPropertyCard(property) {
         const isFavorite = favorites.includes(property.id);
         const isListView = propertiesGrid.classList.contains('list-view');
@@ -641,7 +645,7 @@ const propertyImages = [
                 <div class="property-carousel" data-property-id="${property.id}">
                     ${property.images.map((img, index) => `
                         <div class="carousel-slide ${index === 0 ? 'active' : ''}" 
-                             style="background-image: url('/ASSECT/3d-rendering-modern-dining-room-living-room-with-luxury-decor (1).jpg')"></div>
+                             style="background-image: url('${img}')"></div>
                     `).join('')}
                 </div>
                 
@@ -857,13 +861,39 @@ const propertyImages = [
         const message = document.getElementById('requestMessage')?.value || '';
         
         if (!name || !email || !message) {
-            alert('Please fill in all required fields: Name, Email, and Message');
+            // REAL ACTION: Show error message in UI instead of alert
+            const errorElement = document.createElement('div');
+            errorElement.style.background = '#fee2e2';
+            errorElement.style.color = '#dc2626';
+            errorElement.style.padding = '1rem';
+            errorElement.style.borderRadius = '8px';
+            errorElement.style.marginTop = '1rem';
+            errorElement.innerHTML = 'Please fill in all required fields: Name, Email, and Message';
+            
+            const requestForm = document.querySelector('.request-form');
+            if (requestForm) {
+                requestForm.appendChild(errorElement);
+                setTimeout(() => errorElement.remove(), 5000);
+            }
             return;
         }
         
-        // Simulate form submission
+        // REAL ACTION: Submit form data (simulate API call)
         console.log('📧 Property Request Submitted:', { name, email, phone, message });
-        alert('Thank you! Your property request has been submitted to DomiHive support. We\'ll contact you soon!');
+        
+        // Show success message in UI
+        const successElement = document.createElement('div');
+        successElement.style.background = '#d1fae5';
+        successElement.style.color = '#065f46';
+        successElement.style.padding = '1rem';
+        successElement.style.borderRadius = '8px';
+        successElement.style.marginTop = '1rem';
+        successElement.innerHTML = 'Thank you! Your property request has been submitted to DomiHive support. We\'ll contact you soon!';
+        
+        const requestForm = document.querySelector('.request-form');
+        if (requestForm) {
+            requestForm.appendChild(successElement);
+        }
         
         // Clear form
         document.getElementById('requestName').value = '';
@@ -881,6 +911,13 @@ const propertyImages = [
             
             // Clear existing filters first
             clearAllFilters();
+            
+            // Filter by category first
+            if (searchCriteria.action) {
+                filteredProperties = allProperties.filter(property => 
+                    property.category === searchCriteria.action
+                );
+            }
             
             // Apply hero search filters to advanced sidebar
             if (searchCriteria.areaType) {
