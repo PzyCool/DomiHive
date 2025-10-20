@@ -4,82 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Property Details - DomiHive</title>
-    <link rel="stylesheet" href="/CSS/property-details.css">
     <link rel="stylesheet" href="/CSS/style.css">
+    <link rel="stylesheet" href="/CSS/property-details.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Navigation Header -->
-    <header class="navbar">
-        <div class="nav-container">
-            <div class="logo-hierarchy">
-                <div class="main-product">
-                    <img src="/ASSECT/Logo Design_ DomiHive saas 2.png" alt="DomiHive" class="hierarchy-logo domihive-logo">
-                    <span class="company-tooltip">DomiHive - Property Details</span>
-                </div>
-            </div>
-
-            <nav class="nav-links">
-                <a href="/index.html" class="nav-link">Home</a>
-                
-                <div class="nav-dropdown">
-                    <a href="/Pages/rent.html" class="nav-link">Rent <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-menu">
-                        <a href="/Pages/for-tenant.html" class="dropdown-item">
-                            <i class="fas fa-home"></i>
-                            For Tenants
-                        </a>
-                        <a href="/Pages/for-student.html" class="dropdown-item">
-                            <i class="fas fa-graduation-cap"></i>
-                            For Students
-                        </a>
-                    </div>
-                </div>
-
-                <div class="nav-separator"></div>
-
-                <div class="nav-actions">
-                    <button class="nav-icon favorite-counter" title="Saved Properties" id="favorites-btn">
-                        <i class="fas fa-heart"></i>
-                        <span class="favorite-badge">0</span>
-                    </button>
-                </div>
-
-                <div class="nav-dropdown">
-                    <a href="#" class="nav-link">Login <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-menu">
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-graduation-cap"></i>
-                            Student Login
-                        </a>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-home"></i>
-                            Tenant Login
-                        </a>
-                    </div>
-                </div>
-
-                <div class="nav-icons">
-                    <button class="nav-icon theme-toggle" title="Toggle Theme">
-                        <i class="fas fa-moon"></i>
-                    </button>
-                    
-                    <button class="nav-icon" title="Notifications">
-                        <i class="fas fa-bell"></i>
-                        <span class="notification-badge">3</span>
-                    </button>
-                </div>
-            </nav>
-
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </header>
-
     <!-- Property Details Main Content -->
     <main class="property-details-page">
         <div class="container">
+            <!-- Back to Dashboard Button -->
+            <div class="back-navigation">
+                <button class="back-btn" id="backToDashboard">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Dashboard
+                </button>
+                <div class="property-context" id="propertyContext">
+                    <!-- Shows which dashboard user came from -->
+                </div>
+            </div>
+
             <!-- Property Gallery Section -->
             <section class="property-gallery">
                 <!-- Main Image Carousel -->
@@ -108,7 +51,7 @@
                         <span class="property-badge badge-verified" id="verifiedBadge">Verified</span>
                         <span class="property-badge badge-featured" id="featuredBadge">Featured</span>
                         <span class="property-badge badge-new" id="newBadge">New</span>
-                        <span class="property-badge badge-type" id="typeBadge">For Tenants</span>
+                        <span class="property-badge badge-type" id="typeBadge">For Rent</span>
                     </div>
                 </div>
 
@@ -123,17 +66,17 @@
             <!-- Property Main Details -->
             <section class="property-main-details">
                 <div class="details-header">
-                    <h1 class="property-title" id="propertyTitle">Property Title</h1>
-                    <div class="property-price" id="propertyPrice">₦0/year</div>
+                    <h1 class="property-title" id="propertyTitle">Luxury 3-Bedroom Apartment in Ikoyi</h1>
+                    <div class="property-price" id="propertyPrice">₦4,500,000/year</div>
                     
                     <div class="property-meta">
                         <div class="property-location">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span id="propertyLocation">Location</span>
+                            <span id="propertyLocation">Ikoyi, Lagos Island</span>
                         </div>
                         <div class="property-id">
                             <i class="fas fa-hashtag"></i>
-                            Property ID: <span id="propertyId">000</span>
+                            Property ID: <span id="propertyId">rent_123</span>
                         </div>
                     </div>
                 </div>
@@ -142,41 +85,128 @@
                 <div class="key-features">
                     <div class="feature">
                         <i class="fas fa-bed"></i>
-                        <span id="bedroomsCount">0</span> Bedrooms
+                        <span id="bedroomsCount">3</span> Bedrooms
                     </div>
                     <div class="feature">
                         <i class="fas fa-bath"></i>
-                        <span id="bathroomsCount">0</span> Bathrooms
+                        <span id="bathroomsCount">3</span> Bathrooms
                     </div>
                     <div class="feature">
                         <i class="fas fa-ruler-combined"></i>
-                        <span id="propertySize">0 sqm</span>
+                        <span id="propertySize">180 sqm</span>
                     </div>
                     <div class="feature">
                         <i class="fas fa-layer-group"></i>
-                        <span id="propertyType">Type</span>
+                        <span id="propertyType">Apartment</span>
                     </div>
                 </div>
 
-                <!-- "I Like This" Section -->
-                <div class="like-section">
-                    <label class="like-checkbox">
-                        <input type="checkbox" id="likeCheckbox">
-                        <span class="checkmark"></span>
-                        <span class="like-text">I like this property</span>
-                    </label>
-                    
-                    <div class="proceed-button-container" id="proceedButtonContainer">
-                        <!-- Direct HTML links - no JavaScript needed -->
-                        <div class="booking-options">
-                            <a href="/Pages/application.html?propertyId=1&userType=tenant&flow=direct" class="option-btn primary-btn">
-                                <i class="fas fa-file-signature"></i>
-                                Proceed to Application
-                            </a>
-                            <a href="/Pages/book-inspection.html?propertyId=1&userType=tenant&flow=inspection" class="option-btn secondary-btn">
-                                <i class="fas fa-calendar-check"></i>
-                                Book Inspection First
-                            </a>
+                <!-- Property Description -->
+                <div class="property-description-section">
+                    <h2><i class="fas fa-file-alt"></i> Property Overview</h2>
+                    <p id="propertyDescription">This stunning 3-bedroom apartment offers luxurious living in the heart of Ikoyi. Featuring modern finishes, spacious rooms, and premium amenities, this property is perfect for families seeking comfort and style.</p>
+                </div>
+            </section>
+
+            <!-- Room-by-Room Gallery -->
+            <section class="room-gallery-section">
+                <h2><i class="fas fa-images"></i> Room-by-Room Tour</h2>
+                
+                <!-- Living Room -->
+                <div class="room-section">
+                    <h3>Living Room & Seating Area</h3>
+                    <div class="room-images-grid">
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=400&fit=crop" alt="Living room main view" loading="lazy">
+                        </div>
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=400&fit=crop" alt="Living room seating area" loading="lazy">
+                        </div>
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=600&h=400&fit=crop" alt="Living room entertainment area" loading="lazy">
+                        </div>
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=600&h=400&fit=crop" alt="Living room windows view" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kitchen -->
+                <div class="room-section">
+                    <h3>Modern Kitchen</h3>
+                    <div class="room-images-grid">
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=400&fit=crop" alt="Kitchen main view" loading="lazy">
+                        </div>
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&h=400&fit=crop" alt="Kitchen countertop" loading="lazy">
+                        </div>
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=400&fit=crop" alt="Kitchen appliances" loading="lazy">
+                        </div>
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1600566753151-384129cf4e3e?w=600&h=400&fit=crop" alt="Kitchen storage" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bedrooms -->
+                <div class="room-section">
+                    <h3>Bedrooms</h3>
+                    <div class="room-images-grid">
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&h=400&fit=crop" alt="Master bedroom" loading="lazy">
+                            <span class="room-label">Master Bedroom</span>
+                        </div>
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600&h=400&fit=crop" alt="Second bedroom" loading="lazy">
+                            <span class="room-label">Bedroom 2</span>
+                        </div>
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&h=400&fit=crop" alt="Third bedroom" loading="lazy">
+                            <span class="room-label">Bedroom 3</span>
+                        </div>
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=400&fit=crop" alt="Bedroom wardrobe" loading="lazy">
+                            <span class="room-label">Wardrobe Space</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bathrooms -->
+                <div class="room-section">
+                    <h3>Bathrooms</h3>
+                    <div class="room-images-grid">
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1584621744653-701b3d0fc00c?w=600&h=400&fit=crop" alt="Master bathroom" loading="lazy">
+                            <span class="room-label">Master Bathroom</span>
+                        </div>
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&h=400&fit=crop" alt="Guest bathroom" loading="lazy">
+                            <span class="room-label">Guest Bathroom</span>
+                        </div>
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1633890225165-1f25122bd5e7?w=600&h=400&fit=crop" alt="Powder room" loading="lazy">
+                            <span class="room-label">Powder Room</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Areas -->
+                <div class="room-section">
+                    <h3>Additional Spaces</h3>
+                    <div class="room-images-grid">
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=400&fit=crop" alt="Corridor" loading="lazy">
+                            <span class="room-label">Corridor</span>
+                        </div>
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=600&h=400&fit=crop" alt="Balcony" loading="lazy">
+                            <span class="room-label">Balcony</span>
+                        </div>
+                        <div class="room-image">
+                            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=400&fit=crop" alt="Storage area" loading="lazy">
+                            <span class="room-label">Storage Area</span>
                         </div>
                     </div>
                 </div>
@@ -186,44 +216,25 @@
             <section class="video-section">
                 <h2><i class="fas fa-video"></i> Video Walkthrough</h2>
                 <div class="video-container">
-                    <video controls poster="" id="mainVideo" class="property-video">
-                        <source src="/ASSECT/6026331_People_Person_3840x2160.mp4" type="video/mp4">
+                    <video controls poster="https://images.unsplash.com/photo-1564019471349-34e8a875c5c8?w=800&h=450&fit=crop" id="mainVideo" class="property-video">
+                        <source src="https://assets.mixkit.co/videos/preview/mixkit-a-residential-building-facade-44517-large.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     
                     <div class="video-thumbnails">
-                        <!-- Video thumbnails will be added by JavaScript -->
-                    </div>
-                </div>
-                
-                <!-- Additional Videos -->
-                <div class="additional-videos">
-                    <h3>More Video Tours</h3>
-                    <div class="video-grid" id="additionalVideos">
-                        <!-- Additional videos will be added by JavaScript -->
-                    </div>
-                </div>
-            </section>
-
-            <!-- Detailed Description -->
-            <section class="description-section">
-                <h2><i class="fas fa-file-alt"></i> Property Description</h2>
-                <div class="description-content">
-                    <p id="propertyDescription">Property description will be loaded here...</p>
-                    
-                    <!-- Highlights -->
-                    <div class="property-highlights">
-                        <h3>Property Highlights</h3>
-                        <ul id="propertyHighlights">
-                            <!-- Highlights will be added by JavaScript -->
-                        </ul>
-                    </div>
-                    
-                    <!-- Full Features List -->
-                    <div class="full-features">
-                        <h3>Complete Features & Amenities</h3>
-                        <div class="features-grid" id="featuresGrid">
-                            <!-- Features will be added by JavaScript -->
+                        <div class="video-thumbnail active" onclick="playVideo(0)">
+                            <img src="https://images.unsplash.com/photo-1564019471349-34e8a875c5c8?w=300&h=200&fit=crop" alt="Full property tour">
+                            <div class="video-play-btn">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <span class="video-title">Full Property Tour</span>
+                        </div>
+                        <div class="video-thumbnail" onclick="playVideo(1)">
+                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=300&h=200&fit=crop" alt="Neighborhood tour">
+                            <div class="video-play-btn">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <span class="video-title">Neighborhood Tour</span>
                         </div>
                     </div>
                 </div>
@@ -236,22 +247,50 @@
                 <div class="location-details">
                     <div class="address-details">
                         <h3>Address Details</h3>
-                        <div class="address-info" id="addressInfo">
-                            <!-- Address details will be added by JavaScript -->
+                        <div class="address-info">
+                            <p><strong>Full Address:</strong> 24 Bourdillon Road, Ikoyi, Lagos</p>
+                            <div class="landmarks">
+                                <h4>Key Landmarks:</h4>
+                                <ul>
+                                    <li>5 mins to Falomo Shopping Centre</li>
+                                    <li>10 mins to Ikoyi Club</li>
+                                    <li>15 mins to Victoria Island</li>
+                                    <li>20 mins to Lagos Island</li>
+                                </ul>
+                            </div>
                         </div>
                         
                         <div class="neighborhood-features">
                             <h4>Neighborhood Features</h4>
-                            <div class="neighborhood-list" id="neighborhoodList">
-                                <!-- Neighborhood features will be added by JavaScript -->
+                            <div class="neighborhood-list">
+                                <span class="neighborhood-tag">Quiet Residential Area</span>
+                                <span class="neighborhood-tag">24/7 Security</span>
+                                <span class="neighborhood-tag">Good Road Network</span>
+                                <span class="neighborhood-tag">Close to Schools</span>
+                                <span class="neighborhood-tag">Shopping Centers</span>
                             </div>
                         </div>
                     </div>
                     
                     <div class="map-container">
-                        <div class="map-placeholder" id="propertyMap">
-                            <!-- Map will be embedded here -->
-                            <p>Interactive map will be displayed here</p>
+                        <h3>Property Location</h3>
+                        <div class="interactive-map" id="propertyMap">
+                            <!-- Google Maps Embed -->
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.611284464356!2d3.433663774887945!3d6.448882223774667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf52d2c1c7c27%3A0xec3b3dc4e7b45b6b!2sIkoyi%2C%20Lagos!5e0!3m2!1sen!2sng!4v1700000000000!5m2!1sen!2sng" 
+                                width="100%" 
+                                height="300" 
+                                style="border:0; border-radius: 8px;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                            <div class="map-actions">
+                                <button class="map-direction-btn" onclick="openGoogleMapsDirections()">
+                                    <i class="fas fa-directions"></i>
+                                    Get Directions
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -259,8 +298,35 @@
                 <!-- Nearby Amenities -->
                 <div class="nearby-amenities">
                     <h3>Nearby Amenities</h3>
-                    <div class="amenities-grid" id="nearbyAmenities">
-                        <!-- Nearby amenities will be added by JavaScript -->
+                    <div class="amenities-grid">
+                        <div class="amenity-item">
+                            <i class="fas fa-shopping-cart"></i>
+                            <div class="amenity-info">
+                                <strong>Shopping Mall</strong>
+                                <span>0.5km away</span>
+                            </div>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-hospital"></i>
+                            <div class="amenity-info">
+                                <strong>Hospital</strong>
+                                <span>1.2km away</span>
+                            </div>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-school"></i>
+                            <div class="amenity-info">
+                                <strong>School</strong>
+                                <span>0.8km away</span>
+                            </div>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-utensils"></i>
+                            <div class="amenity-info">
+                                <strong>Restaurant</strong>
+                                <span>0.3km away</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -273,28 +339,44 @@
                     <div class="specs-category">
                         <h3>Building Details</h3>
                         <div class="specs-list" id="buildingSpecs">
-                            <!-- Building specs will be added by JavaScript -->
+                            <div class="spec-item">New construction (2023)</div>
+                            <div class="spec-item">6-floor building with elevator</div>
+                            <div class="spec-item">Modern architectural design</div>
+                            <div class="spec-item">Energy efficient windows</div>
+                            <div class="spec-item">Fire safety system</div>
                         </div>
                     </div>
                     
                     <div class="specs-category">
                         <h3>Interior Features</h3>
                         <div class="specs-list" id="interiorSpecs">
-                            <!-- Interior specs will be added by JavaScript -->
+                            <div class="spec-item">Marble flooring in living areas</div>
+                            <div class="spec-item">Fitted wardrobes in all bedrooms</div>
+                            <div class="spec-item">Modern ceiling lights</div>
+                            <div class="spec-item">Central air conditioning</div>
+                            <div class="spec-item">Smart home ready</div>
                         </div>
                     </div>
                     
                     <div class="specs-category">
                         <h3>Exterior & Outdoor</h3>
                         <div class="specs-list" id="exteriorSpecs">
-                            <!-- Exterior specs will be added by JavaScript -->
+                            <div class="spec-item">Swimming pool</div>
+                            <div class="spec-item">Children's playground</div>
+                            <div class="spec-item">Landscaped gardens</div>
+                            <div class="spec-item">Secure parking space</div>
+                            <div class="spec-item">24/7 security guard</div>
                         </div>
                     </div>
                     
                     <div class="specs-category">
                         <h3>Utilities & Services</h3>
                         <div class="specs-list" id="utilitiesSpecs">
-                            <!-- Utilities specs will be added by JavaScript -->
+                            <div class="spec-item">Constant water supply</div>
+                            <div class="spec-item">Backup generator</div>
+                            <div class="spec-item">High-speed fiber internet</div>
+                            <div class="spec-item">CCTV surveillance</div>
+                            <div class="spec-item">Waste management</div>
                         </div>
                     </div>
                 </div>
@@ -302,17 +384,17 @@
 
             <!-- Rental Terms & Conditions -->
             <section class="terms-section">
-                <h2><i class="fas fa-file-contract"></i> Rental Terms</h2>
+                <h2><i class="fas fa-file-contract"></i> Rental Terms & Agreement</h2>
                 
                 <div class="terms-grid">
                     <div class="term-item">
                         <h3>Lease Duration</h3>
-                        <p id="leaseDuration">1 year minimum</p>
+                        <p id="leaseDuration">1-2 years</p>
                     </div>
                     
                     <div class="term-item">
                         <h3>Payment Terms</h3>
-                        <p id="paymentTerms">Annual payment</p>
+                        <p id="paymentTerms">Annual payment preferred</p>
                     </div>
                     
                     <div class="term-item">
@@ -322,14 +404,43 @@
                     
                     <div class="term-item">
                         <h3>Maintenance</h3>
-                        <p id="maintenanceTerms">Landlord responsible</p>
+                        <p id="maintenanceTerms">Landlord responsible for major repairs</p>
                     </div>
                 </div>
                 
                 <div class="full-terms">
                     <h3>Complete Terms & Conditions</h3>
-                    <div class="terms-content" id="fullTerms">
-                        <!-- Full terms will be added by JavaScript -->
+                    <div class="terms-content">
+                        <p>This property is managed by DomiHive with the following terms:</p>
+                        <ul>
+                            <li><strong>Lease Duration:</strong> 1-2 years minimum</li>
+                            <li><strong>Payment Terms:</strong> Annual payment preferred, quarterly available</li>
+                            <li><strong>Security Deposit:</strong> 2 months rent, refundable after inspection</li>
+                            <li><strong>Maintenance:</strong> Landlord responsible for major repairs and structural issues</li>
+                            <li>All utilities included in the rent (water, waste management)</li>
+                            <li>Property inspection before move-in and after move-out</li>
+                            <li>24/7 customer support available for maintenance requests</li>
+                            <li>No pets allowed without prior written consent</li>
+                            <li>Smoking prohibited inside the property</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Action Section -->
+            <section class="action-section">
+                <div class="like-section">
+                    <label class="like-checkbox">
+                        <input type="checkbox" id="likeCheckbox">
+                        <span class="checkmark"></span>
+                        <span class="like-text">I like this property and I'm interested in proceeding</span>
+                    </label>
+                    
+                    <div class="proceed-button-container" id="proceedButtonContainer" style="display: none;">
+                        <button class="proceed-btn" id="bookInspectionBtn">
+                            <i class="fas fa-calendar-check"></i>
+                            Book Inspection
+                        </button>
                     </div>
                 </div>
             </section>

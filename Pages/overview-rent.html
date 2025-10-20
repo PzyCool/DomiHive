@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Overview - DomiHive</title>
+    <link rel="stylesheet" href="/CSS/overview-rent.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Overview Content -->
+    <div class="overview-content">
+        <!-- Welcome Header with Real-time Data -->
+        <div class="overview-hero">
+            <div class="hero-content">
+                <div class="welcome-section">
+                    <h1 id="welcomeTitle">Good Morning, <span id="userName">Alex</span>! 👋</h1>
+                    <p class="hero-subtitle">Here's your rental journey at a glance</p>
+                    <div class="real-time-badge">
+                        <i class="fas fa-circle"></i>
+                        <span>Live Data Updated</span>
+                        <small id="lastUpdateTime">Just now</small>
+                    </div>
+                </div>
+                <div class="quick-actions-bar">
+                    <button class="quick-action-btn" onclick="quickAction('payRent')">
+                        <i class="fas fa-credit-card"></i>
+                        Pay Rent
+                    </button>
+                    <button class="quick-action-btn" onclick="quickAction('scheduleInspection')">
+                        <i class="fas fa-calendar-plus"></i>
+                        Schedule Inspection
+                    </button>
+                    <button class="quick-action-btn" onclick="quickAction('reportMaintenance')">
+                        <i class="fas fa-tools"></i>
+                        Report Issue
+                    </button>
+                    <button class="quick-action-btn primary" onclick="quickAction('browseProperties')">
+                        <i class="fas fa-search"></i>
+                        Find Properties
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Metrics Dashboard -->
+        <section class="metrics-dashboard">
+            <div class="metrics-grid">
+                <!-- Financial Overview -->
+                <div class="metric-card financial">
+                    <div class="metric-header">
+                        <h3>Financial Overview</h3>
+                        <div class="metric-trend positive">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>On Track</span>
+                        </div>
+                    </div>
+                    <div class="metric-value">₦150,000</div>
+                    <div class="metric-label">Monthly Rent</div>
+                    <div class="metric-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Next Payment</span>
+                            <span class="detail-value" id="nextPaymentDate">15 days</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 50%"></div>
+                        </div>
+                    </div>
+                    <button class="metric-action" onclick="handlePaymentAction()">
+                        <i class="fas fa-bolt"></i>
+                        Pay Now
+                    </button>
+                </div>
+
+                <!-- Properties Overview -->
+                <div class="metric-card properties">
+                    <div class="metric-header">
+                        <h3>My Properties</h3>
+                        <div class="metric-badge">2 Active</div>
+                    </div>
+                    <div class="metric-value">2</div>
+                    <div class="metric-label">Rented Properties</div>
+                    <div class="properties-list">
+                        <div class="property-item">
+                            <div class="property-avatar">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <div class="property-info">
+                                <strong>Lekki Apartment</strong>
+                                <span>₦120,000/month</span>
+                            </div>
+                            <div class="property-status good"></div>
+                        </div>
+                        <div class="property-item">
+                            <div class="property-avatar">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <div class="property-info">
+                                <strong>Ikeja Duplex</strong>
+                                <span>₦180,000/month</span>
+                            </div>
+                            <div class="property-status warning"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Applications Overview -->
+                <div class="metric-card applications">
+                    <div class="metric-header">
+                        <h3>Applications</h3>
+                        <div class="metric-badge urgent">3 Active</div>
+                    </div>
+                    <div class="metric-value">3</div>
+                    <div class="metric-label">Active Applications</div>
+                    <div class="applications-progress">
+                        <div class="progress-step completed">
+                            <div class="step-icon">1</div>
+                            <span>Submitted</span>
+                        </div>
+                        <div class="progress-step active">
+                            <div class="step-icon">2</div>
+                            <span>Under Review</span>
+                        </div>
+                        <div class="progress-step">
+                            <div class="step-icon">3</div>
+                            <span>Approval</span>
+                        </div>
+                    </div>
+                    <button class="metric-action" onclick="dashboard.navigateToSection('applications')">
+                        View All Applications
+                    </button>
+                </div>
+
+                <!-- Maintenance Overview -->
+                <div class="metric-card maintenance">
+                    <div class="metric-header">
+                        <h3>Maintenance</h3>
+                        <div class="metric-badge">1 Pending</div>
+                    </div>
+                    <div class="metric-value">1</div>
+                    <div class="metric-label">Active Requests</div>
+                    <div class="maintenance-alert">
+                        <div class="alert-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="alert-content">
+                            <strong>Kitchen Sink Repair</strong>
+                            <span>Pending approval</span>
+                        </div>
+                        <div class="alert-time">2 days ago</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Sidebar Status Panel -->
+        <section class="sidebar-status-panel">
+            <h2 class="panel-title">Your Rental Journey Status</h2>
+            <div class="status-grid">
+                <!-- MAIN Section -->
+                <div class="status-category">
+                    <h3 class="category-title">MAIN</h3>
+                    <div class="status-item" onclick="dashboard.navigateToSection('browse')">
+                        <div class="status-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="status-content">
+                            <span class="status-label">Browse Properties</span>
+                            <span class="status-value">80+ verified properties</span>
+                        </div>
+                        <div class="status-badge new">NEW</div>
+                    </div>
+                </div>
+
+                <!-- APPLICATIONS Section -->
+                <div class="status-category">
+                    <h3 class="category-title">APPLICATIONS</h3>
+                    <div class="status-item" onclick="dashboard.navigateToSection('applications')">
+                        <div class="status-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="status-content">
+                            <span class="status-label">My Applications</span>
+                            <span class="status-value">3 active applications</span>
+                        </div>
+                        <div class="status-badge urgent">3</div>
+                    </div>
+                    <div class="status-item" onclick="dashboard.navigateToSection('inspections')">
+                        <div class="status-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="status-content">
+                            <span class="status-label">Booked Inspections</span>
+                            <span class="status-value">2 upcoming inspections</span>
+                        </div>
+                        <div class="status-badge">2</div>
+                    </div>
+                </div>
+
+                <!-- MY PROPERTIES Section -->
+                <div class="status-category">
+                    <h3 class="category-title">MY PROPERTIES</h3>
+                    <div class="status-item" onclick="dashboard.navigateToSection('my-properties')">
+                        <div class="status-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="status-content">
+                            <span class="status-label">My Properties</span>
+                            <span class="status-value">2 rented properties</span>
+                        </div>
+                    </div>
+                    <div class="status-item" onclick="dashboard.navigateToSection('maintenance')">
+                        <div class="status-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div class="status-content">
+                            <span class="status-label">Maintenance</span>
+                            <span class="status-value">1 pending request</span>
+                        </div>
+                        <div class="status-badge warning">1</div>
+                    </div>
+                    <div class="status-item" onclick="dashboard.navigateToSection('payments')">
+                        <div class="status-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <div class="status-content">
+                            <span class="status-label">Payments</span>
+                            <span class="status-value">Next: ₦150,000 in 15 days</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ACCOUNT Section -->
+                <div class="status-category">
+                    <h3 class="category-title">ACCOUNT</h3>
+                    <div class="status-item" onclick="dashboard.navigateToSection('favorites')">
+                        <div class="status-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="status-content">
+                            <span class="status-label">Favorites</span>
+                            <span class="status-value">12 saved properties</span>
+                        </div>
+                        <div class="status-badge">12</div>
+                    </div>
+                    <div class="status-item" onclick="dashboard.navigateToSection('messages')">
+                        <div class="status-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="status-content">
+                            <span class="status-label">Messages</span>
+                            <span class="status-value">3 unread messages</span>
+                        </div>
+                        <div class="status-badge urgent">3</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Activity Feed -->
+        <section class="activity-section">
+            <div class="activity-header">
+                <h2>Recent Activity</h2>
+                <div class="activity-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="financial">Financial</button>
+                    <button class="filter-btn" data-filter="maintenance">Maintenance</button>
+                    <button class="filter-btn" data-filter="messages">Messages</button>
+                </div>
+            </div>
+            
+            <div class="activity-timeline" id="activityTimeline">
+                <!-- Activities will be populated dynamically -->
+            </div>
+            
+            <div class="activity-loader">
+                <div class="loader-spinner"></div>
+                <span>Loading more activities...</span>
+            </div>
+        </section>
+
+        <!-- Financial Insights Chart -->
+        <section class="insights-section">
+            <div class="insights-header">
+                <h2>Financial Insights</h2>
+                <div class="time-filter">
+                    <select id="timeRangeSelect" onchange="updateFinancialChart()">
+                        <option value="1m">Last Month</option>
+                        <option value="3m" selected>Last 3 Months</option>
+                        <option value="6m">Last 6 Months</option>
+                        <option value="1y">Last Year</option>
+                    </select>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="financialChart"></canvas>
+            </div>
+            <div class="insights-summary">
+                <div class="insight-item">
+                    <span class="insight-label">Total Spent</span>
+                    <span class="insight-value">₦450,000</span>
+                </div>
+                <div class="insight-item">
+                    <span class="insight-label">Average Monthly</span>
+                    <span class="insight-value">₦150,000</span>
+                </div>
+                <div class="insight-item">
+                    <span class="insight-label">Savings</span>
+                    <span class="insight-value positive">+₦15,000</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Smart Recommendations -->
+        <section class="recommendations-section">
+            <h2>Smart Recommendations</h2>
+            <div class="recommendations-grid">
+                <div class="recommendation-card">
+                    <div class="recommendation-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Renters Insurance</h3>
+                    <p>Protect your belongings with our affordable insurance plan</p>
+                    <button class="recommendation-btn">Learn More</button>
+                </div>
+                <div class="recommendation-card">
+                    <div class="recommendation-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Auto-Pay Setup</h3>
+                    <p>Never miss a payment with automated rent payments</p>
+                    <button class="recommendation-btn">Enable</button>
+                </div>
+                <div class="recommendation-card">
+                    <div class="recommendation-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Refer & Earn</h3>
+                    <p>Refer friends and earn ₦10,000 for each successful rental</p>
+                    <button class="recommendation-btn">Share Link</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Support Widget -->
+        <div class="support-widget">
+            <div class="support-header" onclick="toggleSupportWidget()">
+                <i class="fas fa-headset"></i>
+                <span>DomiHive Support</span>
+                <i class="fas fa-chevron-down" id="supportChevron"></i>
+            </div>
+            <div class="support-content" id="supportContent">
+                <div class="support-agent">
+                    <div class="agent-avatar">
+                        <img src="/ASSECT/support-agent.jpg" alt="Support Agent">
+                    </div>
+                    <div class="agent-info">
+                        <strong>Chioma</strong>
+                        <span>Online - Ready to help</span>
+                    </div>
+                </div>
+                <div class="support-options">
+                    <button class="support-option" onclick="startLiveChat()">
+                        <i class="fas fa-comment-dots"></i>
+                        Live Chat
+                    </button>
+                    <button class="support-option" onclick="scheduleCallback()">
+                        <i class="fas fa-phone"></i>
+                        Schedule Call
+                    </button>
+                    <button class="support-option" onclick="openHelpCenter()">
+                        <i class="fas fa-question-circle"></i>
+                        Help Center
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="/JAVASCRIPT/overview-content.js"></script>
+</body>
+</html>

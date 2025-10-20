@@ -1,11 +1,9 @@
-// book-inspection.js - Book Inspection Page Functionality
-
+// book-inspection.js - Updated Simplified Version
 document.addEventListener('DOMContentLoaded', function() {
     // Get URL parameters
     const urlParams = new URLSearchParams(window.location.search);
-    const propertyId = urlParams.get('id');
-    const userType = urlParams.get('userType') || 'general';
-    const flowType = urlParams.get('flow') || 'inspection';
+    const propertyId = urlParams.get('property') || urlParams.get('id') || '1';
+    const sourceDashboard = urlParams.get('source') || 'rent';
 
     // Initialize the page
     initBookInspectionPage();
@@ -24,8 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Set minimum date for inspection (today)
         setMinInspectionDate();
         
-        // Pre-fill user type if available
-        prefillUserType();
+        // Auto-detect and display user context
+        displayUserContext();
         
         console.log('✅ Book inspection page loaded for property:', propertyId);
     }
@@ -52,6 +50,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 bathrooms: "shared",
                 size: "12 sqm (per room)",
                 image: "/ASSECT/3d-rendering-modern-dining-room-living-room-with-luxury-decor (1).jpg"
+            },
+            '3': {
+                id: 3,
+                title: "Commercial Space in Victoria Island",
+                price: 3200000,
+                location: "Victoria Island, Lagos",
+                bedrooms: "Office",
+                bathrooms: 2,
+                size: "250 sqm",
+                image: "/ASSECT/3d-rendering-modern-dining-room-living-room-with-luxury-decor (1).jpg"
             }
         };
         
@@ -68,21 +76,71 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('inspectionPropertyImage').src = property.image;
     }
 
+    function displayUserContext() {
+        const currentUser = getCurrentUser();
+        const dashboardNames = {
+            'rent': 'Rental Properties',
+            'student': 'Student Housing',
+            'commercial': 'Commercial Properties',
+            'shortlet': 'Short Lets',
+            'buy': 'Properties for Sale'
+        };
+
+        // Update user display name
+        document.getElementById('userDisplayName').textContent = currentUser.name;
+        
+        // Update dashboard type badge
+        const dashboardBadge = document.getElementById('dashboardTypeBadge');
+        dashboardBadge.textContent = dashboardNames[sourceDashboard] || 'Rent';
+        
+        // Add specific color based on dashboard type
+        const dashboardColors = {
+            'rent': '#3498db',
+            'student': '#9b59b6',
+            'commercial': '#e74c3c',
+            'shortlet': '#f39c12',
+            'buy': '#27ae60'
+        };
+        
+        dashboardBadge.style.backgroundColor = dashboardColors[sourceDashboard] || '#3498db';
+    }
+
+    function getCurrentUser() {
+        // Get user from localStorage or session
+        const savedUser = localStorage.getItem('domihive_current_user');
+        if (savedUser) {
+            return JSON.parse(savedUser);
+        }
+        
+        // Default user data (in real app, this would come from login)
+        const defaultUser = {
+            id: 'user_' + Date.now(),
+            name: 'John Doe',
+            email: 'john.doe@example.com',
+            phone: '+2348012345678',
+            type: sourceDashboard // Auto-detect from source
+        };
+        
+        // Save default user for demo
+        localStorage.setItem('domihive_current_user', JSON.stringify(defaultUser));
+        return defaultUser;
+    }
+
     function setMinInspectionDate() {
         const today = new Date().toISOString().split('T')[0];
-        document.getElementById('inspectionDate').min = today;
+        const dateField = document.getElementById('inspectionDate');
+        dateField.min = today;
         
         // Set default date to tomorrow
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
-        document.getElementById('inspectionDate').value = tomorrow.toISOString().split('T')[0];
-    }
-
-    function prefillUserType() {
-        const savedUserType = sessionStorage.getItem('domihive_user_type');
-        if (savedUserType) {
-            document.getElementById('userType').value = savedUserType;
-        }
+        dateField.value = tomorrow.toISOString().split('T')[0];
+        
+        // Set default time to 10:00 AM
+        document.getElementById('inspectionTime').value = '10:00';
+        
+        // Set default number of people to 1
+        document.getElementById('numberOfPeople').value = '1';
     }
 
     function initEventListeners() {
@@ -92,9 +150,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Date change validation
         document.getElementById('inspectionDate').addEventListener('change', validateInspectionDate);
         
-        // Success modal buttons
-        document.querySelector('.modal-actions .btn-primary').addEventListener('click', proceedToApplication);
-        document.querySelector('.modal-actions .btn-secondary').addEventListener('click', closeSuccessModal);
+        // Real-time form validation
+        document.getElementById('inspectionTime').addEventListener('change', validateForm);
+        document.getElementById('numberOfPeople').addEventListener('change', validateForm);
+        document.getElementById('agreeTerms').addEventListener('change', validateForm);
     }
 
     function handleFormSubmission(e) {
@@ -107,34 +166,29 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function validateForm() {
-        const form = document.getElementById('inspectionBookingForm');
-        const requiredFields = form.querySelectorAll('[required]');
+        const requiredFields = [
+            'inspectionDate',
+            'inspectionTime', 
+            'numberOfPeople',
+            'agreeTerms'
+        ];
+        
         let isValid = true;
 
         // Clear previous errors
         clearValidationErrors();
 
         // Check required fields
-        requiredFields.forEach(field => {
-            if (!field.value.trim()) {
+        requiredFields.forEach(fieldId => {
+            const field = document.getElementById(fieldId);
+            if (!field.value.trim() && fieldId !== 'agreeTerms') {
                 showFieldError(field, 'This field is required');
+                isValid = false;
+            } else if (fieldId === 'agreeTerms' && !field.checked) {
+                showFieldError(field, 'You must agree to the terms and conditions');
                 isValid = false;
             }
         });
-
-        // Validate email
-        const emailField = document.getElementById('email');
-        if (emailField.value && !isValidEmail(emailField.value)) {
-            showFieldError(emailField, 'Please enter a valid email address');
-            isValid = false;
-        }
-
-        // Validate phone
-        const phoneField = document.getElementById('phone');
-        if (phoneField.value && !isValidPhone(phoneField.value)) {
-            showFieldError(phoneField, 'Please enter a valid phone number');
-            isValid = false;
-        }
 
         // Validate date is not in past
         const dateField = document.getElementById('inspectionDate');
@@ -144,16 +198,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         return isValid;
-    }
-
-    function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    }
-
-    function isValidPhone(phone) {
-        const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
-        return phoneRegex.test(phone.replace(/[\s\-\(\)]/g, ''));
     }
 
     function showFieldError(field, message) {
@@ -199,22 +243,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function getFormData() {
         const propertyData = getPropertyData(propertyId);
+        const currentUser = getCurrentUser();
+        const numberOfPeople = document.getElementById('numberOfPeople').value;
+        const peopleText = numberOfPeople === '1' ? '1 person' : `${numberOfPeople} people`;
         
         return {
+            // Property Information
             propertyId: propertyId,
             propertyTitle: propertyData.title,
             propertyLocation: propertyData.location,
-            fullName: document.getElementById('fullName').value,
-            email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value,
-            userType: document.getElementById('userType').value,
+            propertyType: sourceDashboard,
+            
+            // User Information (auto-filled)
+            userId: currentUser.id,
+            userName: currentUser.name,
+            userEmail: currentUser.email,
+            userPhone: currentUser.phone,
+            userType: sourceDashboard,
+            
+            // Inspection Details
             inspectionDate: document.getElementById('inspectionDate').value,
             inspectionTime: document.getElementById('inspectionTime').value,
             inspectionNotes: document.getElementById('inspectionNotes').value,
-            numberOfPeople: document.getElementById('numberOfPeople').value,
+            numberOfPeople: numberOfPeople,
+            attendeesText: peopleText,
+            
+            // System Information
             agreeTerms: document.getElementById('agreeTerms').checked,
             bookingDate: new Date().toISOString(),
-            bookingId: 'DOMI-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9)
+            bookingId: 'DOMI-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9),
+            status: 'pending',
+            sourceDashboard: sourceDashboard
         };
     }
 
@@ -229,8 +288,11 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Simulate API call
         setTimeout(() => {
-            // Save booking to localStorage
+            // Save booking to storage
             saveBookingToStorage(formData);
+            
+            // Create notification
+            createBookingNotification(formData);
             
             // Show success modal
             showSuccessModal(formData);
@@ -238,29 +300,77 @@ document.addEventListener('DOMContentLoaded', function() {
             // Reset button
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
-        }, 2000);
+        }, 1500);
     }
 
     function saveBookingToStorage(bookingData) {
+        // Save to bookings storage
         let bookings = JSON.parse(localStorage.getItem('domihive_inspection_bookings')) || [];
         bookings.push(bookingData);
         localStorage.setItem('domihive_inspection_bookings', JSON.stringify(bookings));
         
-        // Also store current booking for application flow
+        // Save as current booking for application flow
         sessionStorage.setItem('domihive_current_booking', JSON.stringify(bookingData));
+        
+        // Update user type if needed
         sessionStorage.setItem('domihive_user_type', bookingData.userType);
+        
+        console.log('💾 Booking saved to storage:', bookingData.bookingId);
+    }
+
+    function createBookingNotification(bookingData) {
+        const notification = {
+            id: 'notif_' + Date.now(),
+            type: 'inspection_booked',
+            title: 'Inspection Scheduled',
+            message: `Your inspection for ${bookingData.propertyTitle} is scheduled for ${formatDateTime(bookingData.inspectionDate, bookingData.inspectionTime)}`,
+            timestamp: new Date().toISOString(),
+            read: false,
+            action: 'view_application',
+            propertyId: bookingData.propertyId,
+            bookingId: bookingData.bookingId
+        };
+        
+        // Save to notifications
+        let notifications = JSON.parse(localStorage.getItem('domihive_notifications')) || [];
+        notifications.unshift(notification); // Add to beginning
+        localStorage.setItem('domihive_notifications', JSON.stringify(notifications));
+        
+        // Update notification badge count
+        updateNotificationBadge();
+        
+        console.log('🔔 Notification created:', notification);
+    }
+
+    function updateNotificationBadge() {
+        const notifications = JSON.parse(localStorage.getItem('domihive_notifications')) || [];
+        const unreadCount = notifications.filter(n => !n.read).length;
+        
+        // Update badge in header (if exists)
+        const badge = document.querySelector('.notification-badge');
+        if (badge) {
+            badge.textContent = unreadCount > 0 ? unreadCount : '';
+        }
     }
 
     function showSuccessModal(bookingData) {
-        // Update modal content
+        // Update modal content with booking details
         document.getElementById('summaryPropertyTitle').textContent = bookingData.propertyTitle;
         document.getElementById('summaryDateTime').textContent = formatDateTime(bookingData.inspectionDate, bookingData.inspectionTime);
         document.getElementById('summaryLocation').textContent = bookingData.propertyLocation;
+        document.getElementById('summaryAttendees').textContent = bookingData.attendeesText;
         
         // Show modal
         const modal = document.getElementById('successModal');
         modal.style.display = 'flex';
         modal.classList.add('active');
+        
+        // Auto-redirect after 10 seconds if user doesn't click
+        setTimeout(() => {
+            if (modal.style.display === 'flex') {
+                redirectToDashboard();
+            }
+        }, 10000);
     }
 
     function formatDateTime(date, time) {
@@ -286,29 +396,52 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.style.display = 'none';
         modal.classList.remove('active');
         
-        // Reset form
+        // Reset form for potential new booking
         document.getElementById('inspectionBookingForm').reset();
         setMinInspectionDate();
     }
 
+    function redirectToDashboard() {
+        const dashboardPages = {
+            'rent': 'dashboard-rent.html',
+            'student': 'dashboard-student.html',
+            'commercial': 'dashboard-commercial.html',
+            'shortlet': 'dashboard-shortlet.html',
+            'buy': 'dashboard-buy.html'
+        };
+        
+        const targetDashboard = dashboardPages[sourceDashboard] || 'dashboard-rent.html';
+        console.log('🔄 Redirecting to:', targetDashboard);
+        window.location.href = targetDashboard;
+    }
+
     function proceedToApplication() {
         const bookingData = JSON.parse(sessionStorage.getItem('domihive_current_booking'));
-        const userType = bookingData?.userType || 'general';
         
-        console.log('🚀 Proceeding to application after inspection:', { userType, propertyId });
-        
-        // Set flow type to inspection
-        sessionStorage.setItem('domihive_application_flow', 'inspection');
-        
-        // Redirect to application page
-        window.location.href = `/Pages/application.html?propertyId=${propertyId}&userType=${userType}&flow=inspection`;
+        if (bookingData) {
+            console.log('🚀 Proceeding to application after inspection:', bookingData.bookingId);
+            
+            // Set flow type to inspection
+            sessionStorage.setItem('domihive_application_flow', 'inspection');
+            
+            // Redirect to application page
+            window.location.href = `/Pages/application.html?propertyId=${bookingData.propertyId}&bookingId=${bookingData.bookingId}&source=${sourceDashboard}`;
+        } else {
+            // Fallback to dashboard
+            redirectToDashboard();
+        }
     }
 
     // Global functions
     window.goBackToProperty = function() {
-        window.history.back();
+        // Return to the property details page with context
+        window.location.href = `/property-details.html?id=${propertyId}&source=${sourceDashboard}`;
     };
 
     window.closeSuccessModal = closeSuccessModal;
+    window.redirectToDashboard = redirectToDashboard;
     window.proceedToApplication = proceedToApplication;
+
+    // Initialize notification badge on page load
+    updateNotificationBadge();
 });

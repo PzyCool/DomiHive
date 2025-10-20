@@ -4,104 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Browse Properties - DomiHive</title>
-    <link rel="stylesheet" href="/CSS/style.css">
     <link rel="stylesheet" href="/CSS/rent.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
-    <!-- Light Signup Modal -->
-    <div id="signupModal" class="signup-modal" style="display: none;">
-        <div class="signup-modal-overlay"></div>
-        <div class="signup-modal-container">
-            <div class="signup-modal-content">
-                <!-- Left Side - Background Image -->
-                <div class="signup-modal-left">
-                    <div class="signup-modal-background"></div>
-                    <div class="signup-modal-overlay-content">
-                        <img src="/ASSECT/Logo Design_ DomiHive saas 2.png" alt="DomiHive" class="signup-modal-logo">
-                        <h2>Find Your Perfect Property</h2>
-                        <p>Join thousands of users finding their dream homes with DomiHive</p>
-                    </div>
-                </div>
-                
-                <!-- Right Side - Signup Form -->
-                <div class="signup-modal-right">
-                    <button class="signup-modal-close" id="closeSignupModal">
-                        <i class="fas fa-times"></i>
-                    </button>
-                    
-                    <div class="signup-form-container">
-                        <h3>Create Your Account</h3>
-                        <p class="signup-subtitle">Sign up to save properties and schedule viewings</p>
-                        
-                        <!-- Social Signup Buttons -->
-                        <div class="social-signup-buttons">
-                            <button class="social-btn google-btn" id="googleSignupBtn">
-                                <i class="fab fa-google"></i>
-                                Sign up with Google
-                            </button>
-                            <button class="social-btn apple-btn" id="appleSignupBtn">
-                                <i class="fab fa-apple"></i>
-                                Sign up with Apple
-                            </button>
-                        </div>
-                        
-                        <div class="signup-divider">
-                            <span>or continue with</span>
-                        </div>
-                        
-                        <!-- Phone Signup Form -->
-                        <form class="phone-signup-form" id="phoneSignupForm">
-                            <div class="form-group">
-                                <label for="fullName">Full Name</label>
-                                <input type="text" id="fullName" name="fullName" required placeholder="Enter your full name">
-                                <div class="error-message" id="nameError"></div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="phoneNumber">Phone Number</label>
-                                <div class="phone-input-container">
-                                    <div class="country-code">+234</div>
-                                    <input type="tel" id="phoneNumber" name="phoneNumber" required 
-                                           placeholder="801 234 5678" pattern="[0-9]{10}" maxlength="10">
-                                </div>
-                                <div class="error-message" id="phoneError"></div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" id="password" name="password" required 
-                                       placeholder="Create a password" minlength="6">
-                                <div class="error-message" id="passwordError"></div>
-                            </div>
-                            
-                            <div class="form-group checkbox-group">
-                                <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
-                                <label for="agreeTerms">
-                                    I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="terms-link">Privacy Policy</a>
-                                </label>
-                                <div class="error-message" id="termsError"></div>
-                            </div>
-                            
-                            <button type="submit" class="signup-submit-btn" id="signupSubmitBtn">
-                                <span class="btn-text">Create Account</span>
-                                <div class="btn-loading" style="display: none;">
-                                    <i class="fas fa-spinner fa-spin"></i>
-                                    Creating Account...
-                                </div>
-                            </button>
-                        </form>
-                        
-                        <div class="signup-footer">
-                            <p>Already have an account? <a href="#" class="login-link" id="switchToLogin">Log in</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Navigation Header -->
     <header class="navbar">
         <div class="nav-container">
@@ -134,10 +41,10 @@
 
                 <!-- Login/Signup Button -->
                 <div class="auth-buttons">
-                    <button class="nav-link auth-btn" id="authButton">
+                    <a href="/Pages/signup.html" class="nav-link auth-btn">
                         <i class="fas fa-user"></i>
-                        Login
-                    </button>
+                        Signup
+                    </a>
                 </div>
                 
                 <!-- Navigation Icons -->
@@ -176,7 +83,7 @@
                     <button class="tab active" data-type="rent" role="tab" aria-selected="true">🏠 For Rent</button>
                     <button class="tab" data-type="shortlet" role="tab" aria-selected="false">🏨 Short Lets</button>
                     <button class="tab" data-type="commercial" role="tab" aria-selected="false">🏢 Commercial</button>
-                    <button class="tab" data-type="student" role="tab" aria-selected="false">🎓 Student Housing</button>
+                    <button class="tab" data-type="student" role="tab" aria-selected="false">🎓 Hostel</button>
                     <button class="tab" data-type="buy" role="tab" aria-selected="false">💰 Buy</button>
                 </div>
 

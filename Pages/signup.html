@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - DomiHive</title>
+    <link rel="stylesheet" href="/CSS/signup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="signup-container">
+        <!-- Left Side - Brand Hero -->
+        <div class="signup-hero">
+            <div class="hero-overlay">
+                <div class="hero-content">
+                    <img src="/ASSECT/Logo Design_ DomiHive saas 2.png" alt="DomiHive" class="hero-logo">
+                    <h1>Find Your Perfect Property</h1>
+                    <p>Join thousands of users finding their dream homes with DomiHive's verified properties and professional management.</p>
+                    <div class="hero-features">
+                        <div class="feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Verified Properties</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-home"></i>
+                            <span>Professional Management</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-search"></i>
+                            <span>Smart Search</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side - Signup Form -->
+        <div class="signup-form-section">
+            <div class="form-container">
+                <!-- Back to Home -->
+                <a href="/index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Home
+                </a>
+
+                <!-- Form Header -->
+                <div class="form-header">
+                    <h2>Create Your Account</h2>
+                    <p>Sign up to save properties and schedule viewings</p>
+                </div>
+
+                <!-- Social Signup Buttons -->
+                <div class="social-signup">
+                    <button class="social-btn google-btn" id="googleSignupBtn">
+                        <div class="social-icon">
+                            <i class="fab fa-google"></i>
+                        </div>
+                        <span class="social-text">Continue with Google</span>
+                    </button>
+
+                    <button class="social-btn apple-btn" id="appleSignupBtn">
+                        <div class="social-icon">
+                            <i class="fab fa-apple"></i>
+                        </div>
+                        <span class="social-text">Continue with Apple</span>
+                    </button>
+                </div>
+
+                <!-- Divider -->
+                <div class="divider">
+                    <span>or continue with phone</span>
+                </div>
+
+                <!-- Phone Signup Form -->
+                <form class="phone-signup-form" id="phoneSignupForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" required placeholder="Enter your full name">
+                        <div class="error-message" id="nameError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phoneNumber">Phone Number</label>
+                        <div class="phone-input-container">
+                            <div class="country-code">+234</div>
+                            <input type="tel" id="phoneNumber" name="phoneNumber" required 
+                                   placeholder="801 234 5678" pattern="[0-9]{10}" maxlength="10">
+                        </div>
+                        <div class="error-message" id="phoneError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required 
+                               placeholder="Create a password" minlength="6">
+                        <div class="error-message" id="passwordError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required 
+                               placeholder="Confirm your password">
+                        <div class="error-message" id="confirmPasswordError"></div>
+                    </div>
+
+                    <!-- Checkbox Group -->
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                            <label for="agreeTerms">
+                                I agree to the <a href="/terms.html" class="link">Terms of Service</a> and <a href="/privacy.html" class="link">Privacy Policy</a>
+                            </label>
+                        </div>
+
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="screeningConsent" name="screeningConsent" required>
+                            <label for="screeningConsent">
+                                I consent to background screening and verification checks
+                            </label>
+                        </div>
+
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="communicationsConsent" name="communicationsConsent">
+                            <label for="communicationsConsent">
+                                I agree to receive communications regarding my application and property details
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="signup-btn" id="signupSubmitBtn">
+                        <span class="btn-text">Create Account</span>
+                        <div class="btn-loading" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            Creating Account...
+                        </div>
+                    </button>
+                </form>
+
+                <!-- Login Redirect -->
+                <div class="login-redirect">
+                    <p>Already have an account? <a href="/Pages/login.html" class="link">Log in</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/JAVASCRIPT/signup.js"></script>
+</body>
+</html>

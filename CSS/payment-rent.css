@@ -441,7 +441,7 @@
 .form-group input,
 .form-group select {
     padding: 0.8rem 1rem;
-    border: 1px solid var(--gray-light);
+    border: 2px solid var(--gray-light);
     border-radius: 8px;
     font-size: 1rem;
     transition: all 0.3s ease;
@@ -454,6 +454,11 @@
     border-color: var(--accent-color);
     outline: none;
     box-shadow: 0 0 0 3px rgba(159, 117, 57, 0.1);
+}
+
+.form-group input:hover,
+.form-group select:hover {
+    border-color: var(--accent-color);
 }
 
 /* Card Input Styling */
@@ -516,11 +521,16 @@
 
 .upload-receipt input[type="file"] {
     padding: 0.8rem;
-    border: 1px solid var(--gray-light);
+    border: 2px solid var(--gray-light);
     border-radius: 8px;
     background: var(--white);
     width: 100%;
     margin-top: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.upload-receipt input[type="file"]:hover {
+    border-color: var(--accent-color);
 }
 
 .file-note {
@@ -1167,9 +1177,11 @@
     }
 }
 
+/* Continue from previous CSS... */
+
 /* Dark Mode Support */
 body.dark-mode .payment-page {
-    background: var(--white);
+    background: var(--dark-bg);
 }
 
 body.dark-mode .payment-summary,
@@ -1177,7 +1189,7 @@ body.dark-mode .payment-methods-section,
 body.dark-mode .security-features,
 body.dark-mode .success-modal .modal-content,
 body.dark-mode .processing-modal {
-    background: var(--white);
+    background: var(--dark-card);
     border-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -1187,20 +1199,29 @@ body.dark-mode .payment-details,
 body.dark-mode .terms-agreement,
 body.dark-mode .payment-summary-modal,
 body.dark-mode .processing-step {
-    background: var(--light-gray);
+    background: var(--dark-bg);
 }
 
 body.dark-mode .payment-method-card {
-    background: var(--light-gray);
+    background: var(--dark-bg);
 }
 
 body.dark-mode .payment-method-card.selected {
     background: rgba(159, 117, 57, 0.05);
 }
 
+body.dark-mode .upload-receipt input[type="file"] {
+    background: var(--dark-card);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .bank-instructions {
+    background: var(--dark-bg);
+}
+
 /* Field Validation Styles */
 .field-error {
-    color: #e53e3e;
+    color: var(--error);
     font-size: 0.8rem;
     margin-top: 0.3rem;
     display: flex;
@@ -1214,7 +1235,7 @@ body.dark-mode .payment-method-card.selected {
 }
 
 .form-group input:invalid:not(:focus):not(:placeholder-shown) {
-    border-color: #e53e3e;
+    border-color: var(--error);
 }
 
 .form-group input:valid:not(:focus):not(:placeholder-shown) {
@@ -1246,4 +1267,168 @@ body.dark-mode .payment-method-card.selected {
 
 .btn-secondary.loading::after {
     border-top-color: var(--primary-color);
+}
+
+/* Animation for processing steps */
+@keyframes stepComplete {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.processing-step.completed i {
+    animation: stepComplete 0.5s ease;
+}
+
+/* Print Styles for Receipt */
+@media print {
+    .navbar,
+    .progress-steps,
+    .form-actions,
+    .security-features {
+        display: none !important;
+    }
+    
+    .payment-summary,
+    .payment-methods-section {
+        box-shadow: none !important;
+        border: 1px solid #000 !important;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .btn-primary,
+    .btn-secondary {
+        border: 2px solid;
+    }
+    
+    .payment-method-card {
+        border: 2px solid var(--gray-light);
+    }
+    
+    .payment-method-card.selected {
+        border: 3px solid var(--accent-color);
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .spinner {
+        animation: none !important;
+    }
+}
+
+/* Focus styles for accessibility */
+.btn-primary:focus,
+.btn-secondary:focus,
+.payment-method-card:focus,
+.form-group input:focus,
+.form-group select:focus {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Custom scrollbar for modal */
+.success-modal .modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.success-modal .modal-content::-webkit-scrollbar-track {
+    background: var(--light-gray);
+    border-radius: 4px;
+}
+
+.success-modal .modal-content::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 4px;
+}
+
+.success-modal .modal-content::-webkit-scrollbar-thumb:hover {
+    background: #b58a4a;
+}
+
+/* Status colors for different states */
+.status-badge.approved {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.status-badge.rejected {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.status-badge.processing {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+/* Utility classes */
+.text-success { color: var(--success); }
+.text-error { color: var(--error); }
+.text-warning { color: #d97706; }
+.text-info { color: #1890ff; }
+
+.bg-success { background: var(--success); }
+.bg-error { background: var(--error); }
+.bg-warning { background: #f59e0b; }
+.bg-info { background: #1890ff; }
+
+/* Ensure proper contrast ratios */
+@media (prefers-contrast: high) {
+    .detail-label,
+    .breakdown-label {
+        font-weight: 700;
+    }
+    
+    .terms-link {
+        text-decoration: underline;
+    }
+}
+
+/* Mobile touch improvements */
+@media (hover: none) and (pointer: coarse) {
+    .btn-primary,
+    .btn-secondary,
+    .payment-method-card,
+    .copy-btn {
+        min-height: 44px;
+    }
+    
+    .form-group input,
+    .form-group select {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+}
+
+/* Ensure proper stacking context */
+.modal {
+    isolation: isolate;
+}
+
+/* Print receipt styles */
+.receipt-print {
+    display: none;
+}
+
+@media print {
+    .receipt-print {
+        display: block;
+    }
+    
+    .no-print {
+        display: none !important;
+    }
 }

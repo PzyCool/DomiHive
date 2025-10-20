@@ -20,9 +20,9 @@
             </div>
 
             <nav class="nav-links">
-                <a href="/index.html" class="nav-link">Home</a>
+                <!--<a href="/index.html" class="nav-link">Home</a>-->
                 
-                <div class="nav-dropdown">
+                <!--<div class="nav-dropdown">
                     <a href="/Pages/rent.html" class="nav-link">Rent <i class="fas fa-chevron-down"></i></a>
                     <div class="dropdown-menu">
                         <a href="/Pages/for-tenant.html" class="dropdown-item">
@@ -34,9 +34,9 @@
                             For Students
                         </a>
                     </div>
-                </div>
+                </div>-->
 
-                <div class="nav-separator"></div>
+                <!--<div class="nav-separator"></div>
 
                 <div class="nav-actions">
                     <button class="nav-icon favorite-counter" title="Saved Properties" id="favorites-btn">
@@ -57,18 +57,18 @@
                             Tenant Login
                         </a>
                     </div>
-                </div>
+                </div>-->
 
                 <div class="nav-icons">
                     <button class="nav-icon theme-toggle" title="Toggle Theme">
                         <i class="fas fa-moon"></i>
                     </button>
                     
-                    <button class="nav-icon" title="Notifications">
+                    <!--<button class="nav-icon" title="Notifications">
                         <i class="fas fa-bell"></i>
                         <span class="notification-badge">3</span>
                     </button>
-                </div>
+                </div>-->
             </nav>
 
             <button class="mobile-menu-btn">
@@ -80,30 +80,6 @@
     <!-- Book Inspection Main Content -->
     <main class="book-inspection-page">
         <div class="container">
-            <!-- Progress Steps -->
-            <div class="progress-steps">
-                <div class="step active">
-                    <div class="step-number">1</div>
-                    <div class="step-label">Property Details</div>
-                </div>
-                <div class="step active">
-                    <div class="step-number">2</div>
-                    <div class="step-label">Book Inspection</div>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-label">Complete Application</div>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <div class="step-label">Screening</div>
-                </div>
-                <div class="step">
-                    <div class="step-number">5</div>
-                    <div class="step-label">Payment</div>
-                </div>
-            </div>
-
             <!-- Property Summary -->
             <section class="property-summary">
                 <div class="summary-header">
@@ -147,31 +123,19 @@
                     <p>Choose a convenient date and time for your property viewing</p>
 
                     <form id="inspectionBookingForm" class="inspection-form">
-                        <!-- Contact Information -->
-                        <div class="form-section">
-                            <h3>Your Contact Information</h3>
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="fullName">Full Name *</label>
-                                    <input type="text" id="fullName" name="fullName" required>
+                        <!-- User Context Display (Auto-detected) -->
+                        <div class="user-context-banner">
+                            <div class="context-info">
+                                <i class="fas fa-user-circle"></i>
+                                <div class="context-details">
+                                    <strong>Booking as:</strong>
+                                    <span id="userDisplayName">Loading...</span>
+                                    <span class="dashboard-badge" id="dashboardTypeBadge">Rent</span>
                                 </div>
-                                <div class="form-group">
-                                    <label for="email">Email Address *</label>
-                                    <input type="email" id="email" name="email" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="phone">Phone Number *</label>
-                                    <input type="tel" id="phone" name="phone" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="userType">I am a *</label>
-                                    <select id="userType" name="userType" required>
-                                        <option value="">Select type</option>
-                                        <option value="tenant">Tenant</option>
-                                        <option value="student">Student</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                </div>
+                            </div>
+                            <div class="context-note">
+                                <i class="fas fa-info-circle"></i>
+                                Your account information is automatically used for this booking
                             </div>
                         </div>
 
@@ -231,7 +195,6 @@
                                     <li>I must arrive on time for the scheduled inspection</li>
                                     <li>I need to bring a valid ID for verification</li>
                                     <li>Maximum inspection time is 30 minutes</li>
-                                    <li>I can bring up to 4 guests maximum</li>
                                     <li>Photos and videos are allowed for personal reference only</li>
                                 </ul>
                             </div>
@@ -245,38 +208,10 @@
                             </button>
                             <button type="submit" class="btn-primary">
                                 <i class="fas fa-calendar-check"></i>
-                                Book Inspection
+                                Book Now
                             </button>
                         </div>
                     </form>
-                </div>
-            </section>
-
-            <!-- Next Steps Info -->
-            <section class="next-steps">
-                <h2>What Happens Next?</h2>
-                <div class="steps-grid">
-                    <div class="step-card">
-                        <div class="step-icon">
-                            <i class="fas fa-calendar-alt"></i>
-                        </div>
-                        <h3>Confirmation</h3>
-                        <p>You'll receive a confirmation email with inspection details and directions</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <h3>Inspection</h3>
-                        <p>Meet our agent at the property for your scheduled viewing</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-icon">
-                            <i class="fas fa-file-signature"></i>
-                        </div>
-                        <h3>Application</h3>
-                        <p>After inspection, proceed with your rental application</p>
-                    </div>
                 </div>
             </section>
         </div>
@@ -312,16 +247,24 @@
                             <strong>Location:</strong>
                             <span id="summaryLocation">-</span>
                         </div>
+                        <div class="detail-item">
+                            <strong>Attendees:</strong>
+                            <span id="summaryAttendees">-</span>
+                        </div>
                     </div>
-                    <p class="confirmation-note">You will receive a confirmation email with all the details shortly.</p>
+                    <div class="reschedule-notice">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Can't make it?</strong>
+                            <p>Call us at <a href="tel:+2348123456789">+234 812 345 6789</a> to reschedule your appointment</p>
+                        </div>
+                    </div>
+                    <p class="confirmation-note">You will receive a confirmation notification on your dashboard.</p>
                 </div>
                 
                 <div class="modal-actions">
-                    <button class="btn-secondary" onclick="closeSuccessModal()">
-                        Book Another Inspection
-                    </button>
-                    <button class="btn-primary" onclick="proceedToApplication()">
-                        Proceed to Application
+                    <button class="btn-primary" onclick="redirectToDashboard()">
+                        Return to Dashboard
                         <i class="fas fa-arrow-right"></i>
                     </button>
                 </div>

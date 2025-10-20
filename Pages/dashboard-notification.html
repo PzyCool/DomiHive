@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications - DomiHive</title>
+    <link rel="stylesheet" href="/CSS/style.css">
+    <link rel="stylesheet" href="/CSS/dashboard-notification.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo-hierarchy">
+                <div class="main-product">
+                    <img src="/ASSECT/Logo Design_ DomiHive saas 2.png" alt="DomiHive" class="hierarchy-logo domihive-logo">
+                    <span class="company-tooltip">DomiHive - Notifications</span>
+                </div>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Notifications Main Content -->
+    <main class="notifications-page">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="header-content">
+                    <h1>
+                        <i class="fas fa-bell"></i>
+                        Notifications
+                    </h1>
+                    <div class="header-actions">
+                        <button class="btn-secondary" id="markAllRead">
+                            <i class="fas fa-check-double"></i>
+                            Mark all as read
+                        </button>
+                        <button class="btn-secondary" id="refreshNotifications">
+                            <i class="fas fa-sync-alt"></i>
+                            Refresh
+                        </button>
+                    </div>
+                </div>
+                <p class="page-subtitle">Stay updated with your application progress and important messages</p>
+            </div>
+
+            <!-- Notifications Container -->
+            <div class="notifications-container">
+                <!-- Sidebar Filters -->
+                <aside class="notifications-sidebar">
+                    <div class="sidebar-section">
+                        <h3>Filters</h3>
+                        <div class="filter-options">
+                            <button class="filter-btn active" data-filter="all">
+                                <i class="fas fa-inbox"></i>
+                                All Notifications
+                                <span class="filter-count" id="countAll">0</span>
+                            </button>
+                            <button class="filter-btn" data-filter="unread">
+                                <i class="fas fa-envelope"></i>
+                                Unread
+                                <span class="filter-count" id="countUnread">0</span>
+                            </button>
+                            <button class="filter-btn" data-filter="application">
+                                <i class="fas fa-file-alt"></i>
+                                Applications
+                                <span class="filter-count" id="countApplication">0</span>
+                            </button>
+                            <button class="filter-btn" data-filter="payment">
+                                <i class="fas fa-credit-card"></i>
+                                Payments
+                                <span class="filter-count" id="countPayment">0</span>
+                            </button>
+                            <button class="filter-btn" data-filter="approval">
+                                <i class="fas fa-check-circle"></i>
+                                Approvals
+                                <span class="filter-count" id="countApproval">0</span>
+                            </button>
+                            <button class="filter-btn" data-filter="system">
+                                <i class="fas fa-cog"></i>
+                                System
+                                <span class="filter-count" id="countSystem">0</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <h3>Quick Actions</h3>
+                        <div class="action-buttons">
+                            <button class="action-btn" id="clearAllNotifications">
+                                <i class="fas fa-trash"></i>
+                                Clear All
+                            </button>
+                            <button class="action-btn" id="exportNotifications">
+                                <i class="fas fa-download"></i>
+                                Export
+                            </button>
+                            <button class="action-btn" id="notificationSettings">
+                                <i class="fas fa-cog"></i>
+                                Settings
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Notification Stats -->
+                    <div class="sidebar-section">
+                        <h3>Statistics</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-value" id="totalNotifications">0</div>
+                                <div class="stat-label">Total</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="unreadNotifications">0</div>
+                                <div class="stat-label">Unread</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="todayNotifications">0</div>
+                                <div class="stat-label">Today</div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Main Notifications List -->
+                <section class="notifications-main">
+                    <!-- Notifications Header -->
+                    <div class="notifications-header">
+                        <div class="header-left">
+                            <h2 id="currentFilterTitle">All Notifications</h2>
+                            <span class="results-count" id="resultsCount">0 notifications</span>
+                        </div>
+                        <div class="header-right">
+                            <div class="search-box">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="notificationSearch" placeholder="Search notifications...">
+                            </div>
+                            <div class="sort-options">
+                                <select id="sortNotifications">
+                                    <option value="newest">Newest First</option>
+                                    <option value="oldest">Oldest First</option>
+                                    <option value="unread">Unread First</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notifications List -->
+                    <div class="notifications-list" id="notificationsList">
+                        <!-- Notifications will be dynamically loaded here -->
+                        <div class="empty-state" id="emptyState">
+                            <div class="empty-icon">
+                                <i class="fas fa-bell-slash"></i>
+                            </div>
+                            <h3>No notifications yet</h3>
+                            <p>Your notifications will appear here once you start using DomiHive</p>
+                            <button class="btn-primary" onclick="window.location.href='/Pages/rent.html'">
+                                <i class="fas fa-home"></i>
+                                Browse Properties
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Load More Button -->
+                    <div class="load-more-container" id="loadMoreContainer" style="display: none;">
+                        <button class="btn-secondary" id="loadMoreBtn">
+                            <i class="fas fa-chevron-down"></i>
+                            Load More Notifications
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Notification Detail Modal -->
+    <div class="modal" id="notificationDetailModal">
+        <div class="modal-content notification-modal">
+            <div class="modal-header">
+                <h3 id="modalNotificationTitle">Notification Details</h3>
+                <button class="close-modal" onclick="closeNotificationModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="notification-detail" id="notificationDetailContent">
+                    <!-- Notification details will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Activate Tenant Mode Modal -->
+    <div class="modal" id="activateTenantModal">
+        <div class="modal-content success-modal">
+            <div class="modal-header">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>Welcome to DomiHive!</h2>
+                <button class="close-modal" onclick="closeActivateTenantModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="activation-content">
+                    <p>Congratulations! You are now officially a tenant with DomiHive.</p>
+                    
+                    <div class="activation-details">
+                        <h4>Your New Home:</h4>
+                        <div class="property-summary" id="activatedPropertySummary">
+                            <!-- Property details will be loaded here -->
+                        </div>
+                        
+                        <div class="move-in-instructions">
+                            <h4>Move-in Instructions:</h4>
+                            <div class="instruction-item">
+                                <i class="fas fa-key"></i>
+                                <div>
+                                    <strong>Key Collection:</strong>
+                                    <span id="keyCollectionInfo">Visit our Ikoyi support center with your ID to collect keys</span>
+                                </div>
+                            </div>
+                            <div class="instruction-item">
+                                <i class="fas fa-bolt"></i>
+                                <div>
+                                    <strong>Utilities:</strong>
+                                    <span id="utilitiesInfo">Utilities will be activated within 24 hours of key collection</span>
+                                </div>
+                            </div>
+                            <div class="instruction-item">
+                                <i class="fas fa-headset"></i>
+                                <div>
+                                    <strong>Support:</strong>
+                                    <span id="supportInfo">Contact support@domihive.com for any questions</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tenant-features">
+                        <h4>Now you can:</h4>
+                        <div class="features-grid">
+                            <div class="feature-item">
+                                <i class="fas fa-home"></i>
+                                <span>View your property in "My Properties"</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-comments"></i>
+                                <span>Chat with DomiHive management</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-file-invoice"></i>
+                                <span>Access rental documents</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-tools"></i>
+                                <span>Submit maintenance requests</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-actions">
+                    <button class="btn-secondary" onclick="closeActivateTenantModal()">
+                        <i class="fas fa-envelope"></i>
+                        Send Instructions to Email
+                    </button>
+                    <button class="btn-primary" onclick="completeTenantActivation()">
+                        <i class="fas fa-rocket"></i>
+                        Go to My Properties
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content settings-modal">
+            <div class="modal-header">
+                <h3>Notification Settings</h3>
+                <button class="close-modal" onclick="closeSettingsModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-content">
+                    <div class="setting-group">
+                        <h4>Notification Preferences</h4>
+                        <div class="setting-item">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="emailNotifications" checked>
+                                <span class="checkmark"></span>
+                                Email notifications
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="pushNotifications" checked>
+                                <span class="checkmark"></span>
+                                Push notifications
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="smsNotifications">
+                                <span class="checkmark"></span>
+                                SMS notifications
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <h4>Notification Types</h4>
+                        <div class="setting-item">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="applicationUpdates" checked>
+                                <span class="checkmark"></span>
+                                Application status updates
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="paymentReminders" checked>
+                                <span class="checkmark"></span>
+                                Payment reminders
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="maintenanceAlerts" checked>
+                                <span class="checkmark"></span>
+                                Maintenance alerts
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="promotionalEmails">
+                                <span class="checkmark"></span>
+                                Promotional emails
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <h4>Frequency</h4>
+                        <div class="setting-item">
+                            <label for="notificationFrequency">Notification Frequency:</label>
+                            <select id="notificationFrequency">
+                                <option value="instant">Instant</option>
+                                <option value="hourly">Hourly Digest</option>
+                                <option value="daily">Daily Digest</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-actions">
+                    <button class="btn-secondary" onclick="closeSettingsModal()">
+                        Cancel
+                    </button>
+                    <button class="btn-primary" onclick="saveNotificationSettings()">
+                        Save Settings
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="/JAVASCRIPT/dashboard-notification.js"></script>
+</body>
+</html>

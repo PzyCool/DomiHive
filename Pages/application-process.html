@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Rental Application - DomiHive</title>
+    <link rel="stylesheet" href="/CSS/style.css">
+    <link rel="stylesheet" href="/CSS/application-process.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo-hierarchy">
+                <div class="main-product">
+                    <img src="/ASSECT/Logo Design_ DomiHive saas 2.png" alt="DomiHive" class="hierarchy-logo domihive-logo">
+                    <span class="company-tooltip">DomiHive - Complete Application</span>
+                </div>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Application Main Content -->
+    <main class="application-page">
+        <div class="container">
+            <!-- Progress Steps -->
+            <div class="progress-steps">
+                <div class="step active">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Complete Application</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Screening</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Payment</div>
+                </div>
+            </div>
+
+            <!-- Property Summary -->
+            <section class="property-summary">
+                <div class="summary-header">
+                    <h1>Complete Your Rental Application</h1>
+                    <p id="applicationSubtitle">Please provide accurate information for your tenant screening</p>
+                </div>
+
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="/ASSECT/3d-rendering-modern-dining-room-living-room-with-luxury-decor (1).jpg" alt="Property Image" id="applicationPropertyImage">
+                    </div>
+                    <div class="property-info">
+                        <h3 id="applicationPropertyTitle">Luxury 3-Bedroom Apartment in Ikoyi</h3>
+                        <div class="property-price" id="applicationPropertyPrice">₦4,500,000/year</div>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span id="applicationPropertyLocation">Ikoyi, Lagos Island</span>
+                        </div>
+                        <div class="property-features">
+                            <span class="feature">
+                                <i class="fas fa-bed"></i>
+                                <span id="applicationBedrooms">3</span> bed
+                            </span>
+                            <span class="feature">
+                                <i class="fas fa-bath"></i>
+                                <span id="applicationBathrooms">3</span> bath
+                            </span>
+                            <span class="feature">
+                                <i class="fas fa-ruler-combined"></i>
+                                <span id="applicationSize">180 sqm</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Application Form -->
+            <section class="application-form-section">
+                <div class="form-container">
+                    <form id="rentalApplicationForm" class="application-form">
+                        <!-- Hidden Fields for Tracking -->
+                        <input type="hidden" id="dashboardSource" name="dashboardSource" value="dashboard-rent">
+                        <input type="hidden" id="propertyId" name="propertyId">
+                        <input type="hidden" id="userId" name="userId">
+
+                        <!-- Section 1: Background Information -->
+                        <div class="form-section">
+                            <h3>Background Information</h3>
+                            <p class="section-description">We'll use your account information for basic details</p>
+                            
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label class="required">Full Name</label>
+                                    <div class="prefilled-data" id="prefilledFullName">Loading...</div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="required">Email Address</label>
+                                    <div class="prefilled-data" id="prefilledEmail">Loading...</div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="required">Phone Number</label>
+                                    <div class="prefilled-data" id="prefilledPhone">Loading...</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="currentAddress" class="required">Current Address</label>
+                                    <input type="text" id="currentAddress" name="currentAddress" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="yearsAtCurrentAddress" class="required">Years at Current Address</label>
+                                    <input type="number" id="yearsAtCurrentAddress" name="yearsAtCurrentAddress" min="0" max="50" step="0.5" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Section 2: Rental History -->
+                        <div class="form-section">
+                            <h3>Rental History</h3>
+                            
+                            <div class="form-group full-width">
+                                <label class="required">Have you rented a property before?</label>
+                                <div class="button-group">
+                                    <button type="button" class="yes-btn" onclick="setRentalHistory(true)">Yes</button>
+                                    <button type="button" class="no-btn" onclick="setRentalHistory(false)">No</button>
+                                </div>
+                                <input type="hidden" id="hasRentalHistory" name="hasRentalHistory">
+                            </div>
+
+                            <div id="rentalHistoryDetails" style="display: none;">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="previousLandlordName" class="required">Previous Landlord Name</label>
+                                        <input type="text" id="previousLandlordName" name="previousLandlordName">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="previousLandlordPhone" class="required">Previous Landlord Phone</label>
+                                        <input type="tel" id="previousLandlordPhone" name="previousLandlordPhone">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="previousRentAmount" class="required">Previous Rent Amount (₦)</label>
+                                        <input type="number" id="previousRentAmount" name="previousRentAmount" min="0">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="reasonForLeaving" class="required">Reason for Leaving</label>
+                                        <textarea id="reasonForLeaving" name="reasonForLeaving" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Section 3: Employment & Income Verification -->
+                        <div class="form-section">
+                            <h3>Employment & Income Verification</h3>
+                            
+                            <div class="form-group full-width">
+                                <label class="required">Are you currently employed?</label>
+                                <div class="button-group">
+                                    <button type="button" class="yes-btn" onclick="setEmploymentStatus(true)">Yes</button>
+                                    <button type="button" class="no-btn" onclick="setEmploymentStatus(false)">No</button>
+                                </div>
+                                <input type="hidden" id="isEmployed" name="isEmployed">
+                            </div>
+
+                            <div id="employmentDetails">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="occupation" class="required">Occupation</label>
+                                        <input type="text" id="occupation" name="occupation">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="employer" class="required">Employer/Company</label>
+                                        <input type="text" id="employer" name="employer">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="employmentType" class="required">Employment Type</label>
+                                        <select id="employmentType" name="employmentType">
+                                            <option value="">Select type</option>
+                                            <option value="full-time">Full-time</option>
+                                            <option value="part-time">Part-time</option>
+                                            <option value="self-employed">Self-employed</option>
+                                            <option value="contract">Contract</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="monthlyIncome" class="required">Monthly Income (₦)</label>
+                                        <input type="number" id="monthlyIncome" name="monthlyIncome" min="0">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="workDuration" class="required">Duration at Current Job (years)</label>
+                                        <input type="number" id="workDuration" name="workDuration" min="0" max="50" step="0.5">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Section 4: Personal References -->
+                        <div class="form-section">
+                            <h3>Personal References</h3>
+                            <p class="section-description">Please provide two personal references (not relatives)</p>
+                            
+                            <div class="reference-section">
+                                <h4>Reference 1</h4>
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="reference1Name" class="required">Full Name</label>
+                                        <input type="text" id="reference1Name" name="reference1Name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="reference1Phone" class="required">Phone Number</label>
+                                        <input type="tel" id="reference1Phone" name="reference1Phone" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="reference1Relationship" class="required">Relationship</label>
+                                        <input type="text" id="reference1Relationship" name="reference1Relationship" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="reference1YearsKnown" class="required">Years Known</label>
+                                        <input type="number" id="reference1YearsKnown" name="reference1YearsKnown" min="1" max="50" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="reference-section">
+                                <h4>Reference 2</h4>
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="reference2Name" class="required">Full Name</label>
+                                        <input type="text" id="reference2Name" name="reference2Name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="reference2Phone" class="required">Phone Number</label>
+                                        <input type="tel" id="reference2Phone" name="reference2Phone" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="reference2Relationship" class="required">Relationship</label>
+                                        <input type="text" id="reference2Relationship" name="reference2Relationship" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="reference2YearsKnown" class="required">Years Known</label>
+                                        <input type="number" id="reference2YearsKnown" name="reference2YearsKnown" min="1" max="50" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Section 5: Document Uploads -->
+                        <div class="form-section">
+                            <h3>Document Uploads</h3>
+                            
+                            <div class="upload-section">
+                                <div class="upload-group">
+                                    <label for="governmentId" class="required">Government Issued ID *</label>
+                                    <p class="upload-description">Passport, Driver's License, or National ID</p>
+                                    <input type="file" id="governmentId" name="governmentId" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" required>
+                                    <div class="file-preview" id="governmentIdPreview"></div>
+                                </div>
+
+                                <div class="upload-group">
+                                    <label for="proofOfIncome" class="required">Proof of Income *</label>
+                                    <p class="upload-description">Pay stub, employment letter, or student ID</p>
+                                    <input type="file" id="proofOfIncome" name="proofOfIncome" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" required>
+                                    <div class="file-preview" id="proofOfIncomePreview"></div>
+                                </div>
+
+                                <div class="upload-group">
+                                    <label for="additionalDocuments">Additional Documents (Optional)</label>
+                                    <p class="upload-description">Reference letters, bank statements, etc.</p>
+                                    <input type="file" id="additionalDocuments" name="additionalDocuments" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" multiple>
+                                    <div class="file-preview" id="additionalDocumentsPreview"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Section 6: Terms and Agreements -->
+                        <div class="form-section">
+                            <h3>Terms and Agreements</h3>
+                            
+                            <div class="terms-agreement">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                                    <span class="checkmark"></span>
+                                    I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="terms-link">Privacy Policy</a>
+                                </label>
+                                
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="agreeScreening" name="agreeScreening" required>
+                                    <span class="checkmark"></span>
+                                    I consent to background screening and verification checks
+                                </label>
+                                
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="agreeCommunication" name="agreeCommunication">
+                                    <span class="checkmark"></span>
+                                    I agree to receive communication regarding my application and property updates
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Form Actions -->
+                        <div class="form-actions">
+                            <button type="button" class="btn-secondary" onclick="goBackToPrevious()">
+                                <i class="fas fa-arrow-left"></i>
+                                Back
+                            </button>
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-check-circle"></i>
+                                Submit Application
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div class="success-modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>Application Submitted Successfully!</h2>
+                <button class="close-modal" onclick="closeSuccessModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="success-details">
+                    <p>Your rental application has been received and is being processed.</p>
+                    <div class="application-summary">
+                        <h4>Application Details:</h4>
+                        <div class="detail-item">
+                            <strong>Application ID:</strong>
+                            <span id="summaryApplicationId">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Property:</strong>
+                            <span id="summaryPropertyTitle">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Applicant:</strong>
+                            <span id="summaryApplicantName">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Next Step:</strong>
+                            <span id="summaryNextStep">Background Screening</span>
+                        </div>
+                    </div>
+                    <p class="confirmation-note">Please proceed to the screening process to continue your application.</p>
+                </div>
+                
+                <div class="modal-actions">
+                    <button class="btn-primary" onclick="proceedToScreening()">
+                        Proceed to Screening
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="/JAVASCRIPT/application-process.js"></script>
+</body>
+</html>

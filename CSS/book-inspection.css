@@ -1,4 +1,4 @@
-/* Book Inspection Page - Consistent with Rent Page Styling */
+/* Book Inspection Page - Updated Simplified Version */
 
 /* Base Container */
 .book-inspection-page {
@@ -12,69 +12,6 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1.5rem;
-}
-
-/* Progress Steps */
-.progress-steps {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 3rem;
-    position: relative;
-}
-
-.progress-steps::before {
-    content: '';
-    position: absolute;
-    top: 24px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--gray-light);
-    z-index: 1;
-}
-
-.step {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    z-index: 2;
-    flex: 1;
-}
-
-.step-number {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: var(--white);
-    border: 2px solid var(--gray-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-    color: var(--gray);
-    margin-bottom: 0.5rem;
-    transition: all 0.3s ease;
-}
-
-.step.active .step-number {
-    background: var(--accent-color);
-    border-color: var(--accent-color);
-    color: var(--white);
-    transform: scale(1.1);
-}
-
-.step-label {
-    font-size: 0.9rem;
-    color: var(--gray);
-    font-weight: 500;
-    text-align: center;
-}
-
-.step.active .step-label {
-    color: var(--primary-color);
-    font-weight: 600;
 }
 
 /* Property Summary */
@@ -179,6 +116,70 @@
 
 .feature i {
     color: var(--accent-color);
+}
+
+/* User Context Banner */
+.user-context-banner {
+    background: linear-gradient(135deg, var(--accent-color) 0%, #b58a4a 100%);
+    color: var(--white);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(159, 117, 57, 0.3);
+}
+
+.context-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.context-info i {
+    font-size: 2rem;
+    opacity: 0.9;
+}
+
+.context-details {
+    flex: 1;
+}
+
+.context-details strong {
+    display: block;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 0.3rem;
+}
+
+.context-details span:not(.dashboard-badge) {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.dashboard-badge {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-left: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.context-note {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    opacity: 0.9;
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    border-left: 3px solid rgba(255, 255, 255, 0.5);
+}
+
+.context-note i {
+    font-size: 1rem;
 }
 
 /* Inspection Form Section */
@@ -421,67 +422,6 @@
     transform: translateY(-2px);
 }
 
-/* Next Steps Section */
-.next-steps {
-    background: var(--white);
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    padding: 2rem;
-    border: 1px solid rgba(14, 31, 66, 0.05);
-}
-
-.next-steps h2 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.steps-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-}
-
-.step-card {
-    text-align: center;
-    padding: 2rem 1.5rem;
-    background: var(--light-gray);
-    border-radius: 12px;
-    transition: all 0.3s ease;
-}
-
-.step-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-}
-
-.step-icon {
-    width: 80px;
-    height: 80px;
-    background: var(--accent-color);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.5rem;
-    color: var(--white);
-    font-size: 2rem;
-}
-
-.step-card h3 {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-
-.step-card p {
-    color: var(--dark-gray);
-    line-height: 1.5;
-}
-
 /* Success Modal */
 .success-modal {
     display: none;
@@ -614,10 +554,51 @@
     color: var(--primary-color);
 }
 
+/* Reschedule Notice */
+.reschedule-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: rgba(159, 117, 57, 0.1);
+    padding: 1.2rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-color);
+    margin: 1.5rem 0;
+}
+
+.reschedule-notice i {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    margin-top: 0.2rem;
+}
+
+.reschedule-notice strong {
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.reschedule-notice a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.reschedule-notice a:hover {
+    text-decoration: underline;
+}
+
+.reschedule-notice p {
+    margin: 0;
+    color: var(--dark-gray);
+    font-size: 0.9rem;
+}
+
 .confirmation-note {
     font-style: italic;
     color: var(--gray);
     font-size: 0.9rem;
+    margin-top: 1rem;
 }
 
 .modal-actions {
@@ -626,10 +607,24 @@
     justify-content: center;
 }
 
-.modal-actions .btn-primary,
-.modal-actions .btn-secondary {
+.modal-actions .btn-primary {
     padding: 0.8rem 1.5rem;
     font-size: 0.9rem;
+}
+
+/* Field Error Styling */
+.field-error {
+    color: #e53e3e;
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.field-error::before {
+    content: '⚠';
+    font-size: 0.7rem;
 }
 
 /* Responsive Design */
@@ -660,26 +655,6 @@
         padding: 0 1rem;
     }
     
-    .progress-steps {
-        flex-direction: column;
-        gap: 2rem;
-        align-items: flex-start;
-    }
-    
-    .progress-steps::before {
-        display: none;
-    }
-    
-    .step {
-        flex-direction: row;
-        gap: 1rem;
-        width: 100%;
-    }
-    
-    .step-label {
-        text-align: left;
-    }
-    
     .form-actions {
         flex-direction: column-reverse;
     }
@@ -693,12 +668,25 @@
     .modal-actions {
         flex-direction: column;
     }
+    
+    .user-context-banner {
+        padding: 1.2rem;
+    }
+    
+    .context-info {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.8rem;
+    }
+    
+    .context-info i {
+        font-size: 1.5rem;
+    }
 }
 
 @media (max-width: 480px) {
     .property-summary,
-    .inspection-form-section,
-    .next-steps {
+    .inspection-form-section {
         padding: 1.5rem;
     }
     
@@ -714,12 +702,28 @@
         grid-template-columns: 1fr;
     }
     
-    .steps-grid {
-        grid-template-columns: 1fr;
+    .property-card {
+        padding: 1.2rem;
     }
     
-    .step-card {
-        padding: 1.5rem 1rem;
+    .property-image {
+        height: 120px;
+    }
+    
+    .user-context-banner {
+        padding: 1rem;
+    }
+    
+    .context-note {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+    
+    .reschedule-notice {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.8rem;
     }
 }
 
@@ -730,15 +734,29 @@ body.dark-mode .book-inspection-page {
 
 body.dark-mode .property-summary,
 body.dark-mode .inspection-form-section,
-body.dark-mode .next-steps,
 body.dark-mode .success-modal .modal-content {
     background: var(--white);
     border-color: rgba(255, 255, 255, 0.1);
 }
 
 body.dark-mode .property-card,
-body.dark-mode .step-card,
 body.dark-mode .terms-agreement,
 body.dark-mode .booking-summary {
     background: var(--light-gray);
+}
+
+body.dark-mode .user-context-banner {
+    background: linear-gradient(135deg, var(--accent-color) 0%, #b58a4a 100%);
+}
+
+/* Loading States */
+.btn-primary:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.btn-primary:disabled:hover {
+    transform: none !important;
+    box-shadow: none !important;
 }

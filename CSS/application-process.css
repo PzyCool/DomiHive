@@ -1,4 +1,4 @@
-/* Application Page - Consistent with Book Inspection Styling */
+/* Application Page - Updated for Rental Application Form */
 
 /* Base Container */
 .application-page {
@@ -82,140 +82,6 @@
 .step.active .step-label {
     color: var(--primary-color);
     font-weight: 600;
-}
-
-/* Flow Options Section */
-.flow-options-section {
-    background: var(--white);
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    padding: 2rem;
-    margin-bottom: 2rem;
-    border: 1px solid rgba(14, 31, 66, 0.05);
-}
-
-.flow-header {
-    text-align: center;
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--gray-light);
-}
-
-.flow-header h1 {
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 0.5rem;
-}
-
-.flow-header p {
-    color: var(--gray);
-    font-size: 1.1rem;
-}
-
-.flow-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.flow-card {
-    background: var(--light-gray);
-    border: 2px solid transparent;
-    border-radius: 16px;
-    padding: 2.5rem 2rem;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.flow-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: transparent;
-    transition: all 0.3s ease;
-}
-
-.flow-card:hover::before {
-    background: var(--accent-color);
-}
-
-.flow-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent-color);
-    box-shadow: 0 12px 40px rgba(159, 117, 57, 0.15);
-}
-
-.flow-icon {
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, var(--accent-color), #b58a4a);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.5rem;
-    color: var(--white);
-    font-size: 2rem;
-    transition: all 0.3s ease;
-}
-
-.flow-card:hover .flow-icon {
-    transform: scale(1.1);
-}
-
-.flow-card h3 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-
-.flow-card p {
-    color: var(--dark-gray);
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-}
-
-.flow-benefits {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-}
-
-.benefit-tag {
-    background: var(--accent-color);
-    color: var(--white);
-    padding: 0.4rem 1rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-}
-
-.flow-select-btn {
-    background: var(--primary-color);
-    color: var(--white);
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: 100%;
-}
-
-.flow-select-btn:hover {
-    background: var(--accent-color);
-    transform: translateY(-2px);
 }
 
 /* Property Summary */
@@ -374,6 +240,12 @@
     border-radius: 2px;
 }
 
+.section-description {
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
 /* Form Grid */
 .form-grid {
     display: grid;
@@ -394,28 +266,37 @@
     font-weight: 600;
     color: var(--primary-color);
     margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
 }
 
-.form-group label::after {
+.form-group label.required::after {
     content: '*';
-    color: #e53e3e;
+    color: var(--error);
     font-weight: bold;
+    margin-left: 4px;
 }
 
-/* Form Inputs */
+/* Prefilled Data */
+.prefilled-data {
+    padding: 0.8rem 1rem;
+    background: var(--light-gray);
+    border: 1px solid var(--gray-light);
+    border-radius: 8px;
+    color: var(--dark-gray);
+    font-weight: 500;
+}
+
+/* Form Inputs - Fixed Border Visibility */
 .form-group input,
 .form-group select,
 .form-group textarea {
     padding: 0.8rem 1rem;
-    border: 1px solid var(--gray-light);
+    border: 2px solid var(--gray-light);
     border-radius: 8px;
     font-size: 1rem;
     transition: all 0.3s ease;
     background: var(--white);
     font-family: inherit;
+    width: 100%;
 }
 
 .form-group input:focus,
@@ -426,64 +307,159 @@
     box-shadow: 0 0 0 3px rgba(159, 117, 57, 0.1);
 }
 
-.form-group input:invalid:not(:focus):not(:placeholder-shown) {
-    border-color: #e53e3e;
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+    border-color: var(--accent-color);
 }
 
-/* Password Strength Indicator */
-.password-strength {
+/* Yes/No Button Styles */
+.button-group {
+    display: flex;
+    gap: 1rem;
     margin-top: 0.5rem;
-    height: 4px;
-    border-radius: 2px;
-    background: var(--gray-light);
-    overflow: hidden;
-    position: relative;
 }
 
-.password-strength::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 0%;
-    background: #e53e3e;
+.yes-btn, .no-btn {
+    padding: 0.8rem 1.5rem;
+    border: 2px solid var(--gray-light);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
     transition: all 0.3s ease;
+    background: var(--white);
+    flex: 1;
 }
 
-.password-strength.weak::before {
-    width: 33%;
-    background: #e53e3e;
+.yes-btn {
+    color: var(--success);
+    border-color: var(--success);
 }
 
-.password-strength.medium::before {
-    width: 66%;
-    background: #d69e2e;
-}
-
-.password-strength.strong::before {
-    width: 100%;
+.yes-btn:hover,
+.yes-btn.active {
     background: var(--success);
+    color: var(--white);
 }
 
-/* Specific Form Sections */
-.student-specific,
-.tenant-specific {
-    background: var(--light-gray);
+.no-btn {
+    color: var(--error);
+    border-color: var(--error);
+}
+
+.no-btn:hover,
+.no-btn.active {
+    background: var(--error);
+    color: var(--white);
+}
+
+/* Reference Sections */
+.reference-section {
+    margin-bottom: 2rem;
     padding: 1.5rem;
+    background: var(--light-gray);
     border-radius: 12px;
     border: 1px solid rgba(14, 31, 66, 0.1);
-    margin-top: 1rem;
 }
 
-.student-specific h3,
-.tenant-specific h3 {
+.reference-section:last-child {
+    margin-bottom: 0;
+}
+
+.reference-section h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.reference-section h4::before {
+    content: '';
+    width: 3px;
+    height: 16px;
+    background: var(--accent-color);
+    border-radius: 2px;
+}
+
+/* Upload Sections */
+.upload-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.upload-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.upload-description {
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.upload-group input[type="file"] {
+    padding: 0.8rem;
+    border: 2px dashed var(--gray-light);
+    border-radius: 8px;
+    background: var(--light-gray);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.upload-group input[type="file"]:hover {
+    border-color: var(--accent-color);
+    background: rgba(159, 117, 57, 0.05);
+}
+
+.upload-group input[type="file"]:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(159, 117, 57, 0.1);
+}
+
+/* File Preview */
+.file-preview {
+    margin-top: 0.5rem;
+    min-height: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.preview-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.8rem;
+    background: var(--light-gray);
+    border: 1px solid var(--gray-light);
+    border-radius: 6px;
+    font-size: 0.8rem;
+}
+
+.preview-item .file-icon {
     color: var(--accent-color);
 }
 
-.student-specific h3::before,
-.tenant-specific h3::before {
-    background: var(--primary-color);
+.preview-item .remove-file {
+    background: none;
+    border: none;
+    color: var(--error);
+    cursor: pointer;
+    padding: 0.2rem;
+    border-radius: 4px;
+}
+
+.preview-item .remove-file:hover {
+    background: var(--error);
+    color: var(--white);
 }
 
 /* Terms Agreement */
@@ -747,6 +723,61 @@
     font-size: 0.9rem;
 }
 
+/* Field Validation Styles */
+.field-error {
+    color: var(--error);
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.field-error::before {
+    content: '⚠';
+    font-size: 0.7rem;
+}
+
+.form-group input:invalid:not(:focus):not(:placeholder-shown) {
+    border-color: var(--error);
+}
+
+.form-group input:valid:not(:focus):not(:placeholder-shown) {
+    border-color: var(--success);
+}
+
+/* Loading States */
+.btn-primary.loading,
+.btn-secondary.loading {
+    position: relative;
+    color: transparent;
+}
+
+.btn-primary.loading::after,
+.btn-secondary.loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.btn-primary.loading::after {
+    border-top-color: var(--white);
+}
+
+.btn-secondary.loading::after {
+    border-top-color: var(--primary-color);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     .property-card {
@@ -762,10 +793,6 @@
     
     .property-features {
         justify-content: center;
-    }
-    
-    .flow-cards {
-        grid-template-columns: 1fr;
     }
 }
 
@@ -813,19 +840,18 @@
         flex-direction: column;
     }
     
-    .flow-cards {
-        grid-template-columns: 1fr;
+    .button-group {
+        flex-direction: column;
     }
     
-    .flow-card {
-        padding: 2rem 1.5rem;
+    .reference-section {
+        padding: 1rem;
     }
 }
 
 @media (max-width: 480px) {
     .property-summary,
-    .application-form-section,
-    .flow-options-section {
+    .application-form-section {
         padding: 1.5rem;
     }
     
@@ -841,96 +867,38 @@
         grid-template-columns: 1fr;
     }
     
-    .flow-cards {
-        grid-template-columns: 1fr;
-    }
-    
-    .flow-card {
-        padding: 1.5rem 1rem;
+    .upload-section {
+        gap: 1.5rem;
     }
 }
 
 /* Dark Mode Support */
 body.dark-mode .application-page {
-    background: var(--white);
+    background: var(--dark-bg);
 }
 
 body.dark-mode .property-summary,
 body.dark-mode .application-form-section,
-body.dark-mode .flow-options-section,
 body.dark-mode .success-modal .modal-content {
-    background: var(--white);
+    background: var(--dark-card);
     border-color: rgba(255, 255, 255, 0.1);
 }
 
 body.dark-mode .property-card,
-body.dark-mode .flow-card,
-body.dark-mode .student-specific,
-body.dark-mode .tenant-specific,
+body.dark-mode .reference-section,
 body.dark-mode .terms-agreement,
-body.dark-mode .application-summary {
-    background: var(--light-gray);
+body.dark-mode .application-summary,
+body.dark-mode .prefilled-data {
+    background: var(--dark-bg);
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
-body.dark-mode .flow-card {
-    background: var(--light-gray);
+body.dark-mode .upload-group input[type="file"] {
+    background: var(--dark-bg);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
-body.dark-mode .flow-card:hover {
-    border-color: var(--accent-color);
-}
-
-/* Field Validation Styles */
-.field-error {
-    color: #e53e3e;
-    font-size: 0.8rem;
-    margin-top: 0.3rem;
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-}
-
-.field-error::before {
-    content: '⚠';
-    font-size: 0.7rem;
-}
-
-.form-group input:invalid:not(:focus):not(:placeholder-shown) {
-    border-color: #e53e3e;
-}
-
-.form-group input:valid:not(:focus):not(:placeholder-shown) {
-    border-color: var(--success);
-}
-
-/* Loading States */
-.btn-primary.loading,
-.btn-secondary.loading {
-    position: relative;
-    color: transparent;
-}
-
-.btn-primary.loading::after,
-.btn-secondary.loading::after {
-    content: '';
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    border: 2px solid transparent;
-    border-top: 2px solid currentColor;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-.btn-primary.loading::after {
-    border-top-color: var(--white);
-}
-
-.btn-secondary.loading::after {
-    border-top-color: var(--primary-color);
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+body.dark-mode .preview-item {
+    background: var(--dark-card);
+    border-color: rgba(255, 255, 255, 0.1);
 }

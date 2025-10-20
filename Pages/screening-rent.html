@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tenant Screening - DomiHive</title>
+    <link rel="stylesheet" href="/CSS/screening-rent.css">
+    <link rel="stylesheet" href="/CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo-hierarchy">
+                <div class="main-product">
+                    <img src="/ASSECT/Logo Design_ DomiHive saas 2.png" alt="DomiHive" class="hierarchy-logo domihive-logo">
+                    <span class="company-tooltip">DomiHive - Tenant Screening</span>
+                </div>
+            </div>
+
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Screening Main Content -->
+    <main class="screening-page">
+        <div class="container">
+            <!-- Progress Steps -->
+            <div class="progress-steps">
+                <div class="step completed">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Complete Application</div>
+                </div>
+                <div class="step active">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Screening</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Payment</div>
+                </div>
+            </div>
+
+            <!-- Property Summary -->
+            <section class="property-summary">
+                <div class="summary-header">
+                    <h1>Tenant Screening Process</h1>
+                    <p id="screeningSubtitle">Your application is being verified through automated screening</p>
+                </div>
+
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="/ASSECT/3d-rendering-modern-dining-room-living-room-with-luxury-decor (1).jpg" alt="Property Image" id="screeningPropertyImage">
+                    </div>
+                    <div class="property-info">
+                        <h3 id="screeningPropertyTitle">Property Title</h3>
+                        <div class="property-price" id="screeningPropertyPrice">₦0/year</div>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span id="screeningPropertyLocation">Location</span>
+                        </div>
+                        <div class="applicant-info">
+                            <div class="applicant-name">
+                                <i class="fas fa-user"></i>
+                                <span id="applicantName">Applicant Name</span>
+                            </div>
+                            <div class="application-id">
+                                <i class="fas fa-id-card"></i>
+                                <span id="applicationId">APP-123456</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Application Summary (Read-only) -->
+            <section class="application-summary-section">
+                <div class="summary-container">
+                    <h2>Application Summary</h2>
+                    <p>Review your submitted application information</p>
+
+                    <div class="summary-cards">
+                        <!-- Personal Information -->
+                        <div class="summary-card">
+                            <h3><i class="fas fa-user"></i> Personal Information</h3>
+                            <div class="summary-grid">
+                                <div class="summary-item">
+                                    <strong>Full Name:</strong>
+                                    <span id="summaryFullName">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <strong>Email:</strong>
+                                    <span id="summaryEmail">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <strong>Phone:</strong>
+                                    <span id="summaryPhone">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <strong>Current Address:</strong>
+                                    <span id="summaryCurrentAddress">-</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Employment Information -->
+                        <div class="summary-card">
+                            <h3><i class="fas fa-briefcase"></i> Employment Information</h3>
+                            <div class="summary-grid">
+                                <div class="summary-item">
+                                    <strong>Occupation:</strong>
+                                    <span id="summaryOccupation">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <strong>Employer:</strong>
+                                    <span id="summaryEmployer">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <strong>Employment Type:</strong>
+                                    <span id="summaryEmploymentType">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <strong>Monthly Income:</strong>
+                                    <span id="summaryMonthlyIncome">-</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Rental History -->
+                        <div class="summary-card">
+                            <h3><i class="fas fa-home"></i> Rental History</h3>
+                            <div class="summary-grid">
+                                <div class="summary-item">
+                                    <strong>Previous Renter:</strong>
+                                    <span id="summaryPreviousRenter">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <strong>Previous Landlord:</strong>
+                                    <span id="summaryPreviousLandlord">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <strong>Previous Rent:</strong>
+                                    <span id="summaryPreviousRent">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <strong>Reason for Leaving:</strong>
+                                    <span id="summaryReasonLeaving">-</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- References -->
+                        <div class="summary-card">
+                            <h3><i class="fas fa-users"></i> Personal References</h3>
+                            <div class="references-summary">
+                                <div class="reference-summary">
+                                    <h4>Reference 1</h4>
+                                    <div class="summary-item">
+                                        <strong>Name:</strong>
+                                        <span id="summaryRef1Name">-</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <strong>Phone:</strong>
+                                        <span id="summaryRef1Phone">-</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <strong>Relationship:</strong>
+                                        <span id="summaryRef1Relationship">-</span>
+                                    </div>
+                                </div>
+                                <div class="reference-summary">
+                                    <h4>Reference 2</h4>
+                                    <div class="summary-item">
+                                        <strong>Name:</strong>
+                                        <span id="summaryRef2Name">-</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <strong>Phone:</strong>
+                                        <span id="summaryRef2Phone">-</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <strong>Relationship:</strong>
+                                        <span id="summaryRef2Relationship">-</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Screening Progress -->
+            <section class="screening-progress-section">
+                <div class="progress-container">
+                    <h2>Screening Progress</h2>
+                    <p>Automated checks are running in the background</p>
+
+                    <div class="screening-checks">
+                        <!-- Background Check -->
+                        <div class="check-item" id="backgroundCheck">
+                            <div class="check-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="check-info">
+                                <h4>Background Check</h4>
+                                <p>Verifying criminal history and public records</p>
+                                <div class="check-status">
+                                    <span class="status-text">In Progress</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 30%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Credit Check -->
+                        <div class="check-item" id="creditCheck">
+                            <div class="check-icon">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <div class="check-info">
+                                <h4>Credit Check</h4>
+                                <p>Reviewing credit history and financial responsibility</p>
+                                <div class="check-status">
+                                    <span class="status-text">Pending</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Reference Verification -->
+                        <div class="check-item" id="referenceCheck">
+                            <div class="check-icon">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                            <div class="check-info">
+                                <h4>Reference Verification</h4>
+                                <p>Contacting your personal references</p>
+                                <div class="check-status">
+                                    <span class="status-text">Pending</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Document Validation -->
+                        <div class="check-item" id="documentCheck">
+                            <div class="check-icon">
+                                <i class="fas fa-file-check"></i>
+                            </div>
+                            <div class="check-info">
+                                <h4>Document Validation</h4>
+                                <p>Verifying uploaded documents and identification</p>
+                                <div class="check-status">
+                                    <span class="status-text">In Progress</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 45%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Employment Verification -->
+                        <div class="check-item" id="employmentCheck">
+                            <div class="check-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="check-info">
+                                <h4>Employment Verification</h4>
+                                <p>Confirming employment and income details</p>
+                                <div class="check-status">
+                                    <span class="status-text">Pending</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Rental History Verification -->
+                        <div class="check-item" id="rentalHistoryCheck">
+                            <div class="check-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <div class="check-info">
+                                <h4>Rental History Verification</h4>
+                                <p>Checking previous rental history and landlord references</p>
+                                <div class="check-status">
+                                    <span class="status-text">Pending</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Identity Verification -->
+                        <div class="check-item" id="identityCheck">
+                            <div class="check-icon">
+                                <i class="fas fa-fingerprint"></i>
+                            </div>
+                            <div class="check-info">
+                                <h4>Identity Verification</h4>
+                                <p>Validating government ID and personal information</p>
+                                <div class="check-status">
+                                    <span class="status-text">Completed</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 100%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="overall-progress">
+                        <div class="progress-header">
+                            <h4>Overall Screening Progress</h4>
+                            <span class="progress-percentage" id="overallProgress">14%</span>
+                        </div>
+                        <div class="progress-bar large">
+                            <div class="progress-fill" id="overallProgressBar" style="width: 14%"></div>
+                        </div>
+                        <p class="progress-note">Estimated completion: <span id="estimatedTime">15-20 minutes</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Screening Form -->
+            <section class="screening-form-section">
+                <div class="form-container">
+                    <form id="screeningForm" class="screening-form">
+                        <input type="hidden" id="applicationData" name="applicationData">
+                        <input type="hidden" id="userType" name="userType">
+
+                        <!-- Video Introduction -->
+                        <div class="form-section">
+                            <h3>Video Introduction</h3>
+                            <div class="video-upload-section">
+                                <div class="upload-instructions">
+                                    <div class="instruction-icon">
+                                        <i class="fas fa-video"></i>
+                                    </div>
+                                    <div class="instruction-content">
+                                        <h4>Record a Short Video Introduction</h4>
+                                        <p>Please record a 1-2 minute video introducing yourself and telling us why you'd be a great tenant.</p>
+                                        <ul class="video-tips">
+                                            <li>Speak clearly and face the camera</li>
+                                            <li>Tell us about yourself and your lifestyle</li>
+                                            <li>Mention why you chose this property</li>
+                                            <li>Keep it professional but friendly</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="upload-options">
+                                    <div class="upload-option">
+                                        <input type="file" id="videoUpload" name="videoUpload" accept="video/*" style="display: none;">
+                                        <label for="videoUpload" class="upload-btn">
+                                            <i class="fas fa-upload"></i>
+                                            Upload Video File
+                                        </label>
+                                        <span class="file-size-note">Max 100MB - MP4, MOV, AVI</span>
+                                    </div>
+
+                                    <div class="upload-option">
+                                        <button type="button" class="upload-btn" id="recordVideoBtn">
+                                            <i class="fas fa-record-vinyl"></i>
+                                            Record Video
+                                        </button>
+                                        <span class="file-size-note">Record directly from your camera</span>
+                                    </div>
+                                </div>
+
+                                <div class="video-preview" id="videoPreview" style="display: none;">
+                                    <video controls class="preview-player"></video>
+                                    <button type="button" class="remove-video-btn" onclick="removeVideo()">
+                                        <i class="fas fa-trash"></i>
+                                        Remove Video
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Consent & Authorization -->
+                        <div class="form-section">
+                            <h3>Consent & Authorization</h3>
+                            <div class="consent-section">
+                                <div class="consent-agreement">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="consentBackgroundCheck" name="consentBackgroundCheck" required>
+                                        <span class="checkmark"></span>
+                                        I hereby authorize DomiHive to conduct background, credit, and reference checks as part of my tenant screening process.
+                                    </label>
+                                    
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="consentInformationVerification" name="consentInformationVerification" required>
+                                        <span class="checkmark"></span>
+                                        I consent to the verification of all information provided in this application, including employment, income, and rental history.
+                                    </label>
+                                    
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="agreeScreeningTerms" name="agreeScreeningTerms" required>
+                                        <span class="checkmark"></span>
+                                        I understand that providing false information may result in application rejection and I agree to the <a href="#" class="terms-link">Screening Terms</a>.
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form Actions -->
+                        <div class="form-actions">
+                            <button type="button" class="btn-secondary" onclick="goBackToApplication()">
+                                <i class="fas fa-arrow-left"></i>
+                                Back to Application
+                            </button>
+                            <button type="submit" class="btn-primary" id="submitScreeningBtn">
+                                <i class="fas fa-shield-alt"></i>
+                                Complete Screening & Proceed to Payment
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Video Recording Modal -->
+    <div class="modal" id="videoRecordingModal">
+        <div class="modal-content recording-modal">
+            <div class="modal-header">
+                <h3>Record Your Video Introduction</h3>
+                <button class="close-modal" onclick="closeRecordingModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="recording-interface">
+                    <video id="recordingPreview" muted autoplay></video>
+                    <div class="recording-controls">
+                        <button id="startRecording" class="record-btn">
+                            <i class="fas fa-circle"></i>
+                            Start Recording
+                        </button>
+                        <button id="stopRecording" class="record-btn stop" style="display: none;">
+                            <i class="fas fa-square"></i>
+                            Stop Recording
+                        </button>
+                        <div class="recording-timer" id="recordingTimer">00:00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="success-modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>Screening Completed Successfully!</h2>
+                <button class="close-modal" onclick="closeSuccessModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="success-details">
+                    <p>Your screening information has been submitted and all automated checks are complete.</p>
+                    <div class="screening-results">
+                        <h4>Screening Results:</h4>
+                        <div class="result-item success">
+                            <i class="fas fa-check-circle"></i>
+                            <span>All automated checks passed</span>
+                        </div>
+                        <div class="result-item success">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Video introduction received</span>
+                        </div>
+                        <div class="result-item success">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Ready for payment processing</span>
+                        </div>
+                    </div>
+                    <p class="processing-time">You can now proceed to complete your payment</p>
+                </div>
+                
+                <div class="modal-actions">
+                    <button class="btn-primary" onclick="proceedToPayment()">
+                        Proceed to Payment
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="/JAVASCRIPT/screening-rent.js"></script>
+</body>
+</html>
